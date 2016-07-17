@@ -8,9 +8,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Gentellela Alela! | </title>
 <!-- Bootstrap -->
-{!! HTML::style('assets/vendors/bootstrap/dist/css/bootstrap.min.css') !!}
+{!! HTML::style('assets/vendor/bootstrap/dist/css/bootstrap.min.css') !!}
 <!-- Font Awesome -->
-{!! HTML::style('assets/vendors/font-awesome/css/font-awesome.min.css') !!}
+{!! HTML::style('assets/vendor/font-awesome/css/font-awesome.min.css') !!}
 <!-- Custom Theme Style -->
 {!! HTML::style('assets/build/css/custom.min.css') !!}
 </head>
@@ -21,7 +21,9 @@
         <div class="col-md-3 left_col">
             <div class="left_col scroll-view">
                 <div class="navbar nav_title" style="border: 0;">
-                    <a href="{{ url('') }}" class="site_title"><i class="fa fa-paw"></i> <span>Gentellela Alela!</span></a>
+                    <a href="{{ url('') }}" class="site_title">
+                        <i class="fa fa-paw"></i> <span>Gentellela Alela!</span>
+                    </a>
                 </div>
                 <div class="clearfix"></div>
                 <!-- menu profile quick info -->
@@ -311,13 +313,13 @@
 </div>
 
 <!-- jQuery -->
-{!! HTML::script('assets/vendors/jquery/dist/jquery.min.js') !!}
+{!! HTML::script('assets/vendor/jquery/dist/jquery.min.js') !!}
 <!-- Bootstrap -->
-{!! HTML::script('assets/vendors/bootstrap/dist/js/bootstrap.min.js') !!}
+{!! HTML::script('assets/vendor/bootstrap/dist/js/bootstrap.min.js') !!}
 <!-- FastClick -->
-{!! HTML::script('assets/vendors/fastclick/lib/fastclick.js') !!}
+{!! HTML::script('assets/vendor/fastclick/lib/fastclick.js') !!}
 <!-- NProgress -->
-{!! HTML::script('assets/vendors/nprogress/nprogress.js') !!}
+{!! HTML::script('assets/vendor/nprogress/nprogress.js') !!}
 <!-- Custom Theme Scripts -->
 {!! HTML::script('assets/build/js/custom.min.js') !!}
 
