@@ -47,11 +47,11 @@ $(".slidey-list-description").dotdotdot();
 									<p>{{ date('Y', strtotime($movie->release_date)) }}</p>
 									<div class="block-stars">
 										<ul class="w3l-ratings">
-											<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-											<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-											<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-											<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-											<li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
+											<li><a href="#"><i class="@if($movie->rating >= 1) fa fa-star @else fa fa-star-o @endif" aria-hidden="true"></i></a></li>
+											<li><a href="#"><i class="@if($movie->rating >= 2) fa fa-star @else fa fa-star-o @endif" aria-hidden="true"></i></a></li>
+											<li><a href="#"><i class="@if($movie->rating >= 3) fa fa-star @else fa fa-star-o @endif" aria-hidden="true"></i></a></li>
+											<li><a href="#"><i class="@if($movie->rating >= 4) fa fa-star @else fa fa-star-o @endif" aria-hidden="true"></i></a></li>
+											<li><a href="#"><i class="@if($movie->rating >= 5) fa fa-star @else fa fa-star-o @endif" aria-hidden="true"></i></a></li>
 										</ul>
 									</div>
 									<div class="clearfix"></div>
