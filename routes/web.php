@@ -11,4 +11,8 @@
 |
 */
 
+Route::group(['prefix' => 'movies'], function () {
+    Route::get('downloaded', 'MoviesController@downloaded');
+});
+
 Route::get('/', 'HomeController@index');
