@@ -22,7 +22,7 @@
 				</div>
 			 	<div class="container">
 					<div class="browse-inner-come-agile-w3">
-						@foreach($downloaded_movies as $index => $movie)
+						@foreach($downloadedMovies as $index => $movie)
 							<div class="col-md-2 w3l-movie-gride-agile">
 								<a href="single.html" class="hvr-shutter-out-horizontal">
 								 	<img src="{{ URL::asset('images/covers/movies/'.$movie->cover) }}" title="{{ $movie->other_name }}" alt=" " width="182" height="268">
@@ -61,7 +61,7 @@
 			</div>
 			<!--//browse-agile-w3ls -->
 			<div class="blog-pagenat-wthree">
-				@include('movies.pagination', ['paginator' => $downloaded_movies])
+				@include('movies.pagination', ['paginator' => $downloadedMovies])
 			</div>
 		</div>
 		<!-- //movie-browse-agile -->
@@ -72,7 +72,7 @@
 		   	<div class="container">
 				<div class="w3_agile_banner_bottom_grid">
 					<div id="owl-demo" class="owl-carousel owl-theme">
-						@foreach($random_movies as $movie)
+						@foreach($randomMovies as $movie)
 							<div class="item">
 								<div class="w3l-movie-gride-agile w3l-movie-gride-agile1">
 									<a href="single.html" class="hvr-shutter-out-horizontal">
