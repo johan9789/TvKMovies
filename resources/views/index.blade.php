@@ -234,6 +234,7 @@ $(".slidey-list-description").dotdotdot();
 <!-- //general -->
 
 <!-- Latest-tv-series -->
+<!--
 <div class="Latest-tv-series">
 	<h4 class="latest-text w3_latest_text w3_home_popular">Most Popular Movies</h4>
 	<div class="container">
@@ -811,26 +812,26 @@ $(".slidey-list-description").dotdotdot();
 				</ul>
 			</div>
 		</section>
-		<!-- flexSlider -->
-			<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" property="" />
-			<script defer src="js/jquery.flexslider.js"></script>
-			<script type="text/javascript">
-			$(window).load(function(){
-			  $('.flexslider').flexslider({
-				animation: "slide",
-				start: function(slider){
-				  $('body').removeClass('loading');
-				}
-			  });
-			});
-		  </script>
-		<!-- //flexSlider -->
+        <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" property="" />
+        <script defer src="js/jquery.flexslider.js"></script>
+        <script type="text/javascript">
+        $(window).load(function(){
+            $('.flexslider').flexslider({
+                animation: "slide",
+                start: function(slider){
+                    $('body').removeClass('loading');
+                }
+            });
+        });
+        </script>
 	</div>
 </div>
+-->
 
 <!-- pop-up-box -->
-<script src="{{ URL::asset('js/jquery.magnific-popup.js') }}" type="text/javascript"></script>
+<!-- <script src="{{ URL::asset('js/jquery.magnific-popup.js') }}" type="text/javascript"></script> -->
 <!--//pop-up-box -->
+<!--
 <div id="small-dialog" class="mfp-hide">
 	<iframe src="https://player.vimeo.com/video/164819130?title=0&byline=0"></iframe>
 </div>
@@ -855,6 +856,7 @@ $(document).ready(function() {
 	});
 });
 </script>
+-->
 <!-- //Latest-tv-series -->
 
 @endsection

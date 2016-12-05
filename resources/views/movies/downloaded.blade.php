@@ -14,8 +14,8 @@
 					<div class="container">
 						<div class="agileits-single-top">
 							<ol class="breadcrumb">
-							  <li><a href="index.html">Home</a></li>
-							  <li class="active">Genres</li>
+							  <li><a href="{{ url('') }}">Home</a></li>
+							  <li class="active">Movies</li>
 							</ol>
 						</div>
 					</div>
@@ -65,7 +65,6 @@
 			</div>
 		</div>
 		<!-- //movie-browse-agile -->
-		<!--body wrapper start-->
 		<!--body wrapper start-->
 		<div class="review-slider">
 		 	<h4 class="latest-text">Random Movies</h4>

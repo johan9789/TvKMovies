@@ -6,10 +6,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="keywords" content="One Movies Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design">
 <script type="application/x-javascript">
-    addEventListener("load", function(){ setTimeout(hideURLbar, 0); }, false);
-    function hideURLbar(){
-        window.scrollTo(0, 1);
-    }
+addEventListener("load", function(){ setTimeout(hideURLbar, 0); }, false);
+function hideURLbar(){
+    window.scrollTo(0, 1);
+}
 </script>
 <link href="{{ URL::asset('css/bootstrap.css') }}" rel="stylesheet" type="text/css" media="all">
 <link href="{{ URL::asset('css/style.css') }}" rel="stylesheet" type="text/css" media="all">
@@ -24,25 +24,25 @@
 <link href="{{ URL::asset('css/owl.carousel.css') }}" rel="stylesheet" type="text/css" media="all">
 <script src="{{ URL::asset('js/owl.carousel.js') }}"></script>
 <script>
-    $(document).ready(function(){
-        $("#owl-demo").owlCarousel({
-            autoPlay: 3000, // Set AutoPlay to 3 seconds
-            items : 5,
-            itemsDesktop : [640,4],
-            itemsDesktopSmall : [414,3]
-        });
+$(document).ready(function(){
+    $("#owl-demo").owlCarousel({
+        autoPlay: 3000, // Set AutoPlay to 3 seconds
+        items : 5,
+        itemsDesktop : [640,4],
+        itemsDesktopSmall : [414,3]
     });
+});
 </script>
 <link href='//fonts.googleapis.com/css?family=Roboto+Condensed:400,700italic,700,400italic,300italic,300' rel='stylesheet' type='text/css'>
 <script type="text/javascript" src="{{ URL::asset('js/move-top.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('js/easing.js') }}"></script>
 <script type="text/javascript">
-    jQuery(document).ready(function($){
-        $(".scroll").click(function(event){
-            event.preventDefault();
-            $('html,body').animate({scrollTop:$(this.hash).offset().top}, 1000);
-        });
+jQuery(document).ready(function($){
+    $(".scroll").click(function(event){
+        event.preventDefault();
+        $('html,body').animate({scrollTop:$(this.hash).offset().top}, 1000);
     });
+});
 </script>
 <script type="text/javascript" src="{{ URL::asset('app/js/layout.js') }}"></script>
 </head>
@@ -115,17 +115,17 @@
 </div>
 
 <script>
-    $('.toggle').click(function(){
-        // Switches the Icon
-        $(this).children('i').toggleClass('fa-pencil');
-        // Switches the forms
-        $('.form').animate({
-            height: "toggle",
-            'padding-top': 'toggle',
-            'padding-bottom': 'toggle',
-            opacity: "toggle"
-        }, "slow");
-    });
+$('.toggle').click(function(){
+    // Switches the Icon
+    $(this).children('i').toggleClass('fa-pencil');
+    // Switches the forms
+    $('.form').animate({
+        height: "toggle",
+        'padding-top': 'toggle',
+        'padding-bottom': 'toggle',
+        opacity: "toggle"
+    }, "slow");
+});
 </script>
 <!-- //bootstrap-pop-up -->
 
@@ -250,12 +250,12 @@
                 </div>
             </div>
             <div class="col-md-6 w3ls_footer_grid_right">
-                <a href="index.html"><h2>One<span>Movies</span></h2></a>
+                <a href="index.html"><h2>TvK<span>Movies</span></h2></a>
             </div>
             <div class="clearfix"> </div>
         </div>
         <div class="col-md-5 w3ls_footer_grid1_left">
-            <p>&copy; 2016 One Movies. All rights reserved | Design by <a href="http://w3layouts.com/">W3layouts</a></p>
+            <p>&copy; 2016 TvK Movies. All rights reserved | Design by <a href="http://w3layouts.com/">W3layouts</a></p>
         </div>
         <div class="col-md-7 w3ls_footer_grid1_right">
             <ul>
@@ -276,18 +276,18 @@
 <!-- Bootstrap Core JavaScript -->
 <script src="{{ URL::asset('js/bootstrap.min.js') }}"></script>
 <script type="text/javascript">
-    $(document).ready(function(){
-        $(".dropdown").hover(
-                function(){
-                    $('.dropdown-menu', this).stop( true, true ).slideDown("fast");
-                    $(this).toggleClass('open');
-                },
-                function(){
-                    $('.dropdown-menu', this).stop( true, true ).slideUp("fast");
-                    $(this).toggleClass('open');
-                }
-        );
-    });
+$(document).ready(function(){
+    $(".dropdown").hover(
+        function(){
+            $('.dropdown-menu', this).stop(true, true).slideDown("fast");
+            $(this).toggleClass('open');
+        },
+        function(){
+            $('.dropdown-menu', this).stop(true, true).slideUp("fast");
+            $(this).toggleClass('open');
+        }
+    );
+});
 </script>
 <!-- //Bootstrap Core JavaScript -->
 

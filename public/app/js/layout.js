@@ -1,11 +1,11 @@
 $(function(){
     
     $.getJSON($('#ul_genres_list').attr('data-url'), function(data){
-        var html = '';
+        var content = '';
         $.each(data, function(key, value){
-            html += '<li><a href="#">' + value.name +'</a></li>';
+            content += '<li><a href="#">' + value.name +'</a></li>';
         });
-        $('#ul_genres_list').html(html);
+        $('#ul_genres_list').html(content);
     });
     
 });
