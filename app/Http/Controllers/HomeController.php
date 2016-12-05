@@ -22,7 +22,10 @@ class HomeController extends Controller {
         $recentlyDownloadedMovies = $movie->where('downloaded', true)
                                 ->orderBy('release_date', 'desc')
                                 ->take(12)->get();
-        return view('index', compact('lastMovies', 'soonMovies', 'topRatedMovies', 'recentlyDownloadedMovies', 'pendingMovies'));
+        $nextReleases = $movie->where('release_date', '>', date('Y-m-d'))
+                                ->orderBy('release_date')
+                                ->take(5)->get();
+        return view('index', compact('lastMovies', 'soonMovies', 'topRatedMovies', 'recentlyDownloadedMovies', 'pendingMovies', 'nextReleases'));
     }
     
 }

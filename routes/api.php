@@ -13,6 +13,8 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/user', function (Request $request) {
+Route::resource('genres', 'Api\GenresController', ['as' => 'api', 'only' => ['index']]);
+
+Route::get('/user', function(Request $request){
     return $request->user();
 })->middleware('auth:api');

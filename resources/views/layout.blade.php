@@ -1,49 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>TvK Movies</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="keywords" content="One Movies Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design">
-    <script type="application/x-javascript">
-        addEventListener("load", function(){ setTimeout(hideURLbar, 0); }, false);
-        function hideURLbar(){
-            window.scrollTo(0, 1);
-        }
-    </script>
-    <link href="{{ URL::asset('css/bootstrap.css') }}" rel="stylesheet" type="text/css" media="all">
-    <link href="{{ URL::asset('css/style.css') }}" rel="stylesheet" type="text/css" media="all">
-    <link rel="stylesheet" href="{{ URL::asset('css/contactstyle.css') }}" type="text/css" media="all">
-    <link rel="stylesheet" href="{{ URL::asset('css/faqstyle.css') }}" type="text/css" media="all">
-    <link href="{{ URL::asset('css/medile.css') }}" rel='stylesheet' type='text/css'>
-    <link href="{{ URL::asset('css/single.css') }}" rel='stylesheet' type='text/css'>
-    <link href="{{ URL::asset('css/jquery.slidey.min.css') }}" rel="stylesheet">
-    <link href="{{ URL::asset('css/popuo-box.css') }}" rel="stylesheet" type="text/css" media="all">
-    <script src="https://use.fontawesome.com/f54b360281.js"></script>
-    <script type="text/javascript" src="{{ URL::asset('js/jquery-2.1.4.min.js') }}"></script>
-    <link href="{{ URL::asset('css/owl.carousel.css') }}" rel="stylesheet" type="text/css" media="all">
-    <script src="{{ URL::asset('js/owl.carousel.js') }}"></script>
-    <script>
-        $(document).ready(function(){
-            $("#owl-demo").owlCarousel({
-                autoPlay: 3000, // Set AutoPlay to 3 seconds
-                items : 5,
-                itemsDesktop : [640,4],
-                itemsDesktopSmall : [414,3]
-            });
+<title>TvK Movies</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="keywords" content="One Movies Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design">
+<script type="application/x-javascript">
+    addEventListener("load", function(){ setTimeout(hideURLbar, 0); }, false);
+    function hideURLbar(){
+        window.scrollTo(0, 1);
+    }
+</script>
+<link href="{{ URL::asset('css/bootstrap.css') }}" rel="stylesheet" type="text/css" media="all">
+<link href="{{ URL::asset('css/style.css') }}" rel="stylesheet" type="text/css" media="all">
+<link rel="stylesheet" href="{{ URL::asset('css/contactstyle.css') }}" type="text/css" media="all">
+<link rel="stylesheet" href="{{ URL::asset('css/faqstyle.css') }}" type="text/css" media="all">
+<link href="{{ URL::asset('css/medile.css') }}" rel='stylesheet' type='text/css'>
+<link href="{{ URL::asset('css/single.css') }}" rel='stylesheet' type='text/css'>
+<link href="{{ URL::asset('css/jquery.slidey.min.css') }}" rel="stylesheet">
+<link href="{{ URL::asset('css/popuo-box.css') }}" rel="stylesheet" type="text/css" media="all">
+<script src="https://use.fontawesome.com/f54b360281.js"></script>
+<script type="text/javascript" src="{{ URL::asset('js/jquery-2.1.4.min.js') }}"></script>
+<link href="{{ URL::asset('css/owl.carousel.css') }}" rel="stylesheet" type="text/css" media="all">
+<script src="{{ URL::asset('js/owl.carousel.js') }}"></script>
+<script>
+    $(document).ready(function(){
+        $("#owl-demo").owlCarousel({
+            autoPlay: 3000, // Set AutoPlay to 3 seconds
+            items : 5,
+            itemsDesktop : [640,4],
+            itemsDesktopSmall : [414,3]
         });
-    </script>
-    <link href='//fonts.googleapis.com/css?family=Roboto+Condensed:400,700italic,700,400italic,300italic,300' rel='stylesheet' type='text/css'>
-    <script type="text/javascript" src="{{ URL::asset('js/move-top.js') }}"></script>
-    <script type="text/javascript" src="{{ URL::asset('js/easing.js') }}"></script>
-    <script type="text/javascript">
-        jQuery(document).ready(function($){
-            $(".scroll").click(function(event){
-                event.preventDefault();
-                $('html,body').animate({scrollTop:$(this.hash).offset().top}, 1000);
-            });
+    });
+</script>
+<link href='//fonts.googleapis.com/css?family=Roboto+Condensed:400,700italic,700,400italic,300italic,300' rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="{{ URL::asset('js/move-top.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('js/easing.js') }}"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function($){
+        $(".scroll").click(function(event){
+            event.preventDefault();
+            $('html,body').animate({scrollTop:$(this.hash).offset().top}, 1000);
         });
-    </script>
+    });
+</script>
+<script type="text/javascript" src="{{ URL::asset('app/js/layout.js') }}"></script>
 </head>
 <body>
 
@@ -51,7 +52,7 @@
 <div class="header">
     <div class="container">
         <div class="w3layouts_logo">
-            <a href="index.html"><h1>One<span>Movies</span></h1></a>
+            <a href="{{ url('/') }}"><h1>TvK<span>Movies</span></h1></a>
         </div>
         <div class="w3_search">
             <form action="#" method="post">
@@ -150,15 +151,7 @@
                             <ul class="dropdown-menu multi-column columns-3">
                                 <li>
                                     <div class="col-sm-4">
-                                        <ul class="multi-column-dropdown">
-                                            <li><a href="genres.html">Action</a></li>
-                                            <li><a href="genres.html">Biography</a></li>
-                                            <li><a href="genres.html">Crime</a></li>
-                                            <li><a href="genres.html">Family</a></li>
-                                            <li><a href="horror.html">Horror</a></li>
-                                            <li><a href="genres.html">Romance</a></li>
-                                            <li><a href="genres.html">Sports</a></li>
-                                            <li><a href="genres.html">War</a></li>
+                                        <ul class="multi-column-dropdown" id="ul_genres_list" data-url="{{ route('api.genres.index') }}">
                                         </ul>
                                     </div>
                                     <div class="col-sm-4">
@@ -300,17 +293,17 @@
 
 <!-- here stars scrolling icon -->
 <script type="text/javascript">
-    $(document).ready(function(){
-        /*
-         var defaults = {
-         containerID: 'toTop', // fading element id
-         containerHoverID: 'toTopHover', // fading element hover id
-         scrollSpeed: 1200,
-         easingType: 'linear'
-         };
-         */
-        $().UItoTop({ easingType: 'easeOutQuart' });
-    });
+$(document).ready(function(){
+    /*
+     var defaults = {
+     containerID: 'toTop', // fading element id
+     containerHoverID: 'toTopHover', // fading element hover id
+     scrollSpeed: 1200,
+     easingType: 'linear'
+     };
+     */
+    $().UItoTop({ easingType: 'easeOutQuart' });
+});
 </script>
 <!-- //here ends scrolling icon -->
 
