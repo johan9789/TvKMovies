@@ -7,7 +7,7 @@
 	<ul>
         @foreach($nextReleases as $movie)
             <li>
-                <img src="{{ URL::asset('images/covers/movies/big/'.$movie->big_cover) }}" alt=" ">
+                <img src="{{ URL::asset(config('paths.MOVIE_BIG_COVER').$movie->big_cover) }}" alt="">
                 <p class='title'>{{ $movie->name }}</p>
                 <p class='description'> {{ $movie->synopsis }}</p>
             </li>
@@ -34,45 +34,7 @@ $(".slidey-list-description").dotdotdot();
 	<div class="container">
 		<div class="w3_agile_banner_bottom_grid">
 			<div id="owl-demo" class="owl-carousel owl-theme">
-				@foreach($lastMovies as $movie)
-					<div class="item">
-						<div class="w3l-movie-gride-agile w3l-movie-gride-agile1">
-							<a href="{{ $movie->trailer_url }}" class="hvr-shutter-out-horizontal" @if($movie->trailer_url)target="_blank"@endif>
-								<img src="images/covers/movies/{{ $movie->cover }}" title="{{ $movie->other_name }}" class="img-responsive" alt="">
-								<div class="w3l-action-icon"><i class="fa fa-play-circle" aria-hidden="true"></i></div>
-							</a>
-							<div class="mid-1 agileits_w3layouts_mid_1_home">
-								<div class="w3l-movie-text">
-									<h6><a href="#">{{ $movie->name }}</a></h6>
-								</div>
-								<div class="mid-2 agile_mid_2_home">
-									<p>{{ date('Y', strtotime($movie->release_date)) }}</p>
-									<div class="block-stars">
-										<ul class="w3l-ratings">
-											@for($i=1;$i<=5;$i++)
-												<li>
-													<a href="#" id="star_to_movie" data-id="{{ $movie->id }}" data-qualification="{{ $i }}">
-														<i id="i_star_to_movie" class="@if($movie->rating >= $i) fa fa-star @else fa fa-star-o @endif" aria-hidden="true"></i>
-													</a>
-												</li>
-											@endfor
-										</ul>
-									</div>
-									<div class="clearfix"></div>
-								</div>
-							</div>
-							@if($movie->downloaded)
-								@if($movie->seen)
-									<div class="ribben"><p>✔</p></div>
-								@else
-									<div class="ribben"><p>✘</p></div>
-								@endif
-							@else
-								<div class="ribben"><p>SOON</p></div>
-							@endif
-						</div>
-					</div>
-				@endforeach
+                @include('movies.list.carousel', ['movies' => $lastMovies])
 			</div>
 		</div>
 	</div>
@@ -92,150 +54,16 @@ $(".slidey-list-description").dotdotdot();
 			</ul>
 			<div id="myTabContent" class="tab-content">
 				<div role="tabpanel" class="tab-pane fade active in" id="home" aria-labelledby="home-tab">
-                    @foreach($soonMovies as $index => $movie)
-                        <div class="w3_agile_featured_movies">
-                            <div class="col-md-2 w3l-movie-gride-agile">
-								<a href="{{ $movie->trailer_url }}" class="hvr-shutter-out-horizontal" @if($movie->trailer_url)target="_blank"@endif>
-                                    <img src="{{ URL::asset('images/covers/movies/'.$movie->cover) }}" title="{{ $movie->other_name }}" alt=" " class="img-responsive" width="182" height="268">
-                                    <div class="w3l-action-icon"><i class="fa fa-play-circle" aria-hidden="true"></i></div>
-                                </a>
-                                <div class="mid-1 agileits_w3layouts_mid_1_home">
-                                    <div class="w3l-movie-text">
-                                        <h6><a href="#">{{ $movie->name }}</a></h6>
-                                    </div>
-                                    <div class="mid-2 agile_mid_2_home">
-                                        <p>{{ date('Y', strtotime($movie->release_date)) }}</p>
-                                        <div class="block-stars">
-                                            <ul class="w3l-ratings">
-												@for($i=1;$i<=5;$i++)
-													<li>
-														<a href="#" id="star_to_movie" data-id="{{ $movie->id }}" data-qualification="{{ $i }}">
-															<i id="i_star_to_movie" class="@if($movie->rating >= $i) fa fa-star @else fa fa-star-o @endif" aria-hidden="true"></i>
-														</a>
-													</li>
-												@endfor
-                                            </ul>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </div>
-                                <div class="ribben"><p>SOON</p></div>
-                            </div>
-                        </div>
-                        @if(($index + 1) % 6 == 0)
-                            <div class="clearfix"></div>
-                        @endif
-                    @endforeach
+                    @include('movies.list.split', ['movies' => $soonMovies])
 				</div>
 				<div role="tabpanel" class="tab-pane fade" id="profile" aria-labelledby="profile-tab">
-					@foreach($pendingMovies as $index => $movie)
-                        <div class="col-md-2 w3l-movie-gride-agile">
-							<a href="{{ $movie->trailer_url }}" class="hvr-shutter-out-horizontal" @if($movie->trailer_url)target="_blank"@endif>
-                                <img src="{{ URL::asset('images/covers/movies/'.$movie->cover) }}" title="{{ $movie->other_name }}" alt=" " class="img-responsive" width="182" height="268">
-                                <div class="w3l-action-icon"><i class="fa fa-play-circle" aria-hidden="true"></i></div>
-                            </a>
-                            <div class="mid-1 agileits_w3layouts_mid_1_home">
-                                <div class="w3l-movie-text">
-                                    <h6><a href="#">{{ $movie->name }}</a></h6>
-                                </div>
-                                <div class="mid-2 agile_mid_2_home">
-                                    <p>{{ date('Y', strtotime($movie->release_date)) }}</p>
-                                    <div class="block-stars">
-                                        <ul class="w3l-ratings">
-											@for($i=1;$i<=5;$i++)
-												<li>
-													<a href="#" id="star_to_movie" data-id="{{ $movie->id }}" data-qualification="{{ $i }}">
-														<i id="i_star_to_movie" class="@if($movie->rating >= $i) fa fa-star @else fa fa-star-o @endif" aria-hidden="true"></i>
-													</a>
-												</li>
-											@endfor
-                                        </ul>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </div>
-                            <div class="ribben"><p>✘</p></div>
-                        </div>
-                        @if(($index + 1) % 6 == 0)
-                            <div class="clearfix"></div>
-                        @endif
-                    @endforeach
+                    @include('movies.list.split', ['movies' => $pendingMovies])
 				</div>
 				<div role="tabpanel" class="tab-pane fade" id="rating" aria-labelledby="rating-tab">
-					@foreach($topRatedMovies as $index => $movie)
-						<div class="col-md-2 w3l-movie-gride-agile">
-							<a href="{{ $movie->trailer_url }}" class="hvr-shutter-out-horizontal" @if($movie->trailer_url)target="_blank"@endif>
-								<img src="{{ URL::asset('images/covers/movies/'.$movie->cover) }}" title="{{ $movie->other_name }}" alt=" " class="img-responsive" width="182" height="268">
-								<div class="w3l-action-icon"><i class="fa fa-play-circle" aria-hidden="true"></i></div>
-							</a>
-							<div class="mid-1 agileits_w3layouts_mid_1_home">
-								<div class="w3l-movie-text">
-									<h6><a href="#">{{ $movie->name }}</a></h6>
-								</div>
-								<div class="mid-2 agile_mid_2_home">
-									<p>{{ date('Y', strtotime($movie->release_date)) }}</p>
-									<div class="block-stars">
-										<ul class="w3l-ratings">
-											@for($i=1;$i<=5;$i++)
-												<li>
-													<a href="#" id="star_to_movie" data-id="{{ $movie->id }}" data-qualification="{{ $i }}">
-														<i id="i_star_to_movie" class="@if($movie->rating >= $i) fa fa-star @else fa fa-star-o @endif" aria-hidden="true"></i>
-													</a>
-												</li>
-											@endfor
-										</ul>
-									</div>
-									<div class="clearfix"></div>
-								</div>
-							</div>
-							@if($movie->seen)
-								<div class="ribben"><p>✔</p></div>
-							@else
-								<div class="ribben"><p>✘</p></div>
-							@endif
-						</div>
-						@if(($index + 1) % 6 == 0)
-							<div class="clearfix"></div>
-						@endif
-					@endforeach
+                    @include('movies.list.split', ['movies' => $topRatedMovies])
 				</div>
 				<div role="tabpanel" class="tab-pane fade" id="imdb" aria-labelledby="imdb-tab">
-					@foreach($recentlyDownloadedMovies as $index => $movie)
-						<div class="col-md-2 w3l-movie-gride-agile">
-							<a href="{{ $movie->trailer_url }}" class="hvr-shutter-out-horizontal" @if($movie->trailer_url)target="_blank"@endif>
-								<img src="{{ URL::asset('images/covers/movies/'.$movie->cover) }}" title="{{ $movie->other_name }}" alt=" " class="img-responsive" width="182" height="268">
-								<div class="w3l-action-icon"><i class="fa fa-play-circle" aria-hidden="true"></i></div>
-							</a>
-							<div class="mid-1 agileits_w3layouts_mid_1_home">
-								<div class="w3l-movie-text">
-									<h6><a href="#">{{ $movie->name }}</a></h6>
-								</div>
-								<div class="mid-2 agile_mid_2_home">
-									<p>2016</p>
-									<div class="block-stars">
-										<ul class="w3l-ratings">
-											@for($i=1;$i<=5;$i++)
-												<li>
-													<a href="#" id="star_to_movie" data-id="{{ $movie->id }}" data-qualification="{{ $i }}">
-														<i class="@if($movie->rating >= $i) fa fa-star @else fa fa-star-o @endif" aria-hidden="true"></i>
-													</a>
-												</li>
-											@endfor
-										</ul>
-									</div>
-									<div class="clearfix"></div>
-								</div>
-							</div>
-							@if($movie->seen)
-								<div class="ribben"><p>✔</p></div>
-							@else
-								<div class="ribben"><p>✘</p></div>
-							@endif
-						</div>
-						@if(($index + 1) % 6 == 0)
-							<div class="clearfix"></div>
-						@endif
-					@endforeach
+                    @include('movies.list.split', ['movies' => $recentlyDownloadedMovies])
 				</div>
 			</div>
 		</div>
