@@ -145,7 +145,7 @@ $('.toggle').click(function(){
             <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
                 <nav>
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="index.html">Home</a></li>
+                        <li class="active"><a href="{{ url('') }}">Home</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Genres <b class="caret"></b></a>
                             <ul class="dropdown-menu multi-column columns-3">
@@ -306,6 +306,8 @@ $(document).ready(function(){
 });
 </script>
 <!-- //here ends scrolling icon -->
+
+<span id="url_app" data-url="{{ url('') }}"></span>
 
 </body>
 </html>

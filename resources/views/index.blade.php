@@ -37,23 +37,25 @@ $(".slidey-list-description").dotdotdot();
 				@foreach($lastMovies as $movie)
 					<div class="item">
 						<div class="w3l-movie-gride-agile w3l-movie-gride-agile1">
-							<a href="single.html" class="hvr-shutter-out-horizontal">
-								<img src="images/covers/movies/{{ $movie->cover }}" title="{{ $movie->other_name }}" class="img-responsive" alt=" ">
+							<a href="{{ $movie->trailer_url }}" class="hvr-shutter-out-horizontal" @if($movie->trailer_url)target="_blank"@endif>
+								<img src="images/covers/movies/{{ $movie->cover }}" title="{{ $movie->other_name }}" class="img-responsive" alt="">
 								<div class="w3l-action-icon"><i class="fa fa-play-circle" aria-hidden="true"></i></div>
 							</a>
 							<div class="mid-1 agileits_w3layouts_mid_1_home">
 								<div class="w3l-movie-text">
-									<h6><a href="single.html">{{ $movie->name }}</a></h6>
+									<h6><a href="#">{{ $movie->name }}</a></h6>
 								</div>
 								<div class="mid-2 agile_mid_2_home">
 									<p>{{ date('Y', strtotime($movie->release_date)) }}</p>
 									<div class="block-stars">
 										<ul class="w3l-ratings">
-											<li><a href="#"><i class="@if($movie->rating >= 1) fa fa-star @else fa fa-star-o @endif" aria-hidden="true"></i></a></li>
-											<li><a href="#"><i class="@if($movie->rating >= 2) fa fa-star @else fa fa-star-o @endif" aria-hidden="true"></i></a></li>
-											<li><a href="#"><i class="@if($movie->rating >= 3) fa fa-star @else fa fa-star-o @endif" aria-hidden="true"></i></a></li>
-											<li><a href="#"><i class="@if($movie->rating >= 4) fa fa-star @else fa fa-star-o @endif" aria-hidden="true"></i></a></li>
-											<li><a href="#"><i class="@if($movie->rating >= 5) fa fa-star @else fa fa-star-o @endif" aria-hidden="true"></i></a></li>
+											@for($i=1;$i<=5;$i++)
+												<li>
+													<a href="#" id="star_to_movie" data-id="{{ $movie->id }}" data-qualification="{{ $i }}">
+														<i id="i_star_to_movie" class="@if($movie->rating >= $i) fa fa-star @else fa fa-star-o @endif" aria-hidden="true"></i>
+													</a>
+												</li>
+											@endfor
 										</ul>
 									</div>
 									<div class="clearfix"></div>
@@ -93,23 +95,25 @@ $(".slidey-list-description").dotdotdot();
                     @foreach($soonMovies as $index => $movie)
                         <div class="w3_agile_featured_movies">
                             <div class="col-md-2 w3l-movie-gride-agile">
-                                <a href="single.html" class="hvr-shutter-out-horizontal">
+								<a href="{{ $movie->trailer_url }}" class="hvr-shutter-out-horizontal" @if($movie->trailer_url)target="_blank"@endif>
                                     <img src="{{ URL::asset('images/covers/movies/'.$movie->cover) }}" title="{{ $movie->other_name }}" alt=" " class="img-responsive" width="182" height="268">
                                     <div class="w3l-action-icon"><i class="fa fa-play-circle" aria-hidden="true"></i></div>
                                 </a>
                                 <div class="mid-1 agileits_w3layouts_mid_1_home">
                                     <div class="w3l-movie-text">
-                                        <h6><a href="single.html">{{ $movie->name }}</a></h6>
+                                        <h6><a href="#">{{ $movie->name }}</a></h6>
                                     </div>
                                     <div class="mid-2 agile_mid_2_home">
                                         <p>{{ date('Y', strtotime($movie->release_date)) }}</p>
                                         <div class="block-stars">
                                             <ul class="w3l-ratings">
-                                                <li><a href="#"><i class="@if($movie->rating >= 1) fa fa-star @else fa fa-star-o @endif" aria-hidden="true"></i></a></li>
-                                                <li><a href="#"><i class="@if($movie->rating >= 2) fa fa-star @else fa fa-star-o @endif" aria-hidden="true"></i></a></li>
-                                                <li><a href="#"><i class="@if($movie->rating >= 3) fa fa-star @else fa fa-star-o @endif" aria-hidden="true"></i></a></li>
-                                                <li><a href="#"><i class="@if($movie->rating >= 4) fa fa-star @else fa fa-star-o @endif" aria-hidden="true"></i></a></li>
-                                                <li><a href="#"><i class="@if($movie->rating >= 5) fa fa-star @else fa fa-star-o @endif" aria-hidden="true"></i></a></li>
+												@for($i=1;$i<=5;$i++)
+													<li>
+														<a href="#" id="star_to_movie" data-id="{{ $movie->id }}" data-qualification="{{ $i }}">
+															<i id="i_star_to_movie" class="@if($movie->rating >= $i) fa fa-star @else fa fa-star-o @endif" aria-hidden="true"></i>
+														</a>
+													</li>
+												@endfor
                                             </ul>
                                         </div>
                                         <div class="clearfix"></div>
@@ -126,23 +130,25 @@ $(".slidey-list-description").dotdotdot();
 				<div role="tabpanel" class="tab-pane fade" id="profile" aria-labelledby="profile-tab">
 					@foreach($pendingMovies as $index => $movie)
                         <div class="col-md-2 w3l-movie-gride-agile">
-                            <a href="single.html" class="hvr-shutter-out-horizontal">
+							<a href="{{ $movie->trailer_url }}" class="hvr-shutter-out-horizontal" @if($movie->trailer_url)target="_blank"@endif>
                                 <img src="{{ URL::asset('images/covers/movies/'.$movie->cover) }}" title="{{ $movie->other_name }}" alt=" " class="img-responsive" width="182" height="268">
                                 <div class="w3l-action-icon"><i class="fa fa-play-circle" aria-hidden="true"></i></div>
                             </a>
                             <div class="mid-1 agileits_w3layouts_mid_1_home">
                                 <div class="w3l-movie-text">
-                                    <h6><a href="single.html">{{ $movie->name }}</a></h6>
+                                    <h6><a href="#">{{ $movie->name }}</a></h6>
                                 </div>
                                 <div class="mid-2 agile_mid_2_home">
                                     <p>{{ date('Y', strtotime($movie->release_date)) }}</p>
                                     <div class="block-stars">
                                         <ul class="w3l-ratings">
-                                            <li><a href="#"><i class="@if($movie->rating >= 1) fa fa-star @else fa fa-star-o @endif" aria-hidden="true"></i></a></li>
-                                            <li><a href="#"><i class="@if($movie->rating >= 2) fa fa-star @else fa fa-star-o @endif" aria-hidden="true"></i></a></li>
-                                            <li><a href="#"><i class="@if($movie->rating >= 3) fa fa-star @else fa fa-star-o @endif" aria-hidden="true"></i></a></li>
-                                            <li><a href="#"><i class="@if($movie->rating >= 4) fa fa-star @else fa fa-star-o @endif" aria-hidden="true"></i></a></li>
-                                            <li><a href="#"><i class="@if($movie->rating >= 5) fa fa-star @else fa fa-star-o @endif" aria-hidden="true"></i></a></li>
+											@for($i=1;$i<=5;$i++)
+												<li>
+													<a href="#" id="star_to_movie" data-id="{{ $movie->id }}" data-qualification="{{ $i }}">
+														<i id="i_star_to_movie" class="@if($movie->rating >= $i) fa fa-star @else fa fa-star-o @endif" aria-hidden="true"></i>
+													</a>
+												</li>
+											@endfor
                                         </ul>
                                     </div>
                                     <div class="clearfix"></div>
@@ -158,23 +164,25 @@ $(".slidey-list-description").dotdotdot();
 				<div role="tabpanel" class="tab-pane fade" id="rating" aria-labelledby="rating-tab">
 					@foreach($topRatedMovies as $index => $movie)
 						<div class="col-md-2 w3l-movie-gride-agile">
-							<a href="single.html" class="hvr-shutter-out-horizontal">
+							<a href="{{ $movie->trailer_url }}" class="hvr-shutter-out-horizontal" @if($movie->trailer_url)target="_blank"@endif>
 								<img src="{{ URL::asset('images/covers/movies/'.$movie->cover) }}" title="{{ $movie->other_name }}" alt=" " class="img-responsive" width="182" height="268">
 								<div class="w3l-action-icon"><i class="fa fa-play-circle" aria-hidden="true"></i></div>
 							</a>
 							<div class="mid-1 agileits_w3layouts_mid_1_home">
 								<div class="w3l-movie-text">
-									<h6><a href="single.html">{{ $movie->name }}</a></h6>
+									<h6><a href="#">{{ $movie->name }}</a></h6>
 								</div>
 								<div class="mid-2 agile_mid_2_home">
 									<p>{{ date('Y', strtotime($movie->release_date)) }}</p>
 									<div class="block-stars">
 										<ul class="w3l-ratings">
-											<li><a href="#"><i class="@if($movie->rating >= 1) fa fa-star @else fa fa-star-o @endif" aria-hidden="true"></i></a></li>
-											<li><a href="#"><i class="@if($movie->rating >= 2) fa fa-star @else fa fa-star-o @endif" aria-hidden="true"></i></a></li>
-											<li><a href="#"><i class="@if($movie->rating >= 3) fa fa-star @else fa fa-star-o @endif" aria-hidden="true"></i></a></li>
-											<li><a href="#"><i class="@if($movie->rating >= 4) fa fa-star @else fa fa-star-o @endif" aria-hidden="true"></i></a></li>
-											<li><a href="#"><i class="@if($movie->rating >= 5) fa fa-star @else fa fa-star-o @endif" aria-hidden="true"></i></a></li>
+											@for($i=1;$i<=5;$i++)
+												<li>
+													<a href="#" id="star_to_movie" data-id="{{ $movie->id }}" data-qualification="{{ $i }}">
+														<i id="i_star_to_movie" class="@if($movie->rating >= $i) fa fa-star @else fa fa-star-o @endif" aria-hidden="true"></i>
+													</a>
+												</li>
+											@endfor
 										</ul>
 									</div>
 									<div class="clearfix"></div>
@@ -194,23 +202,25 @@ $(".slidey-list-description").dotdotdot();
 				<div role="tabpanel" class="tab-pane fade" id="imdb" aria-labelledby="imdb-tab">
 					@foreach($recentlyDownloadedMovies as $index => $movie)
 						<div class="col-md-2 w3l-movie-gride-agile">
-							<a href="single.html" class="hvr-shutter-out-horizontal">
+							<a href="{{ $movie->trailer_url }}" class="hvr-shutter-out-horizontal" @if($movie->trailer_url)target="_blank"@endif>
 								<img src="{{ URL::asset('images/covers/movies/'.$movie->cover) }}" title="{{ $movie->other_name }}" alt=" " class="img-responsive" width="182" height="268">
 								<div class="w3l-action-icon"><i class="fa fa-play-circle" aria-hidden="true"></i></div>
 							</a>
 							<div class="mid-1 agileits_w3layouts_mid_1_home">
 								<div class="w3l-movie-text">
-									<h6><a href="single.html">{{ $movie->name }}</a></h6>
+									<h6><a href="#">{{ $movie->name }}</a></h6>
 								</div>
 								<div class="mid-2 agile_mid_2_home">
 									<p>2016</p>
 									<div class="block-stars">
 										<ul class="w3l-ratings">
-											<li><a href="#"><i class="@if($movie->rating >= 1) fa fa-star @else fa fa-star-o @endif" aria-hidden="true"></i></a></li>
-											<li><a href="#"><i class="@if($movie->rating >= 2) fa fa-star @else fa fa-star-o @endif" aria-hidden="true"></i></a></li>
-											<li><a href="#"><i class="@if($movie->rating >= 3) fa fa-star @else fa fa-star-o @endif" aria-hidden="true"></i></a></li>
-											<li><a href="#"><i class="@if($movie->rating >= 4) fa fa-star @else fa fa-star-o @endif" aria-hidden="true"></i></a></li>
-											<li><a href="#"><i class="@if($movie->rating >= 5) fa fa-star @else fa fa-star-o @endif" aria-hidden="true"></i></a></li>
+											@for($i=1;$i<=5;$i++)
+												<li>
+													<a href="#" id="star_to_movie" data-id="{{ $movie->id }}" data-qualification="{{ $i }}">
+														<i class="@if($movie->rating >= $i) fa fa-star @else fa fa-star-o @endif" aria-hidden="true"></i>
+													</a>
+												</li>
+											@endfor
 										</ul>
 									</div>
 									<div class="clearfix"></div>

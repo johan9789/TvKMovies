@@ -27,5 +27,12 @@ class HomeController extends Controller {
                                 ->take(5)->get();
         return view('index', compact('lastMovies', 'soonMovies', 'topRatedMovies', 'recentlyDownloadedMovies', 'pendingMovies', 'nextReleases'));
     }
+
+    public function qualifyMovie($movieId, $qualification){
+        $movie = Movie::findOrFail($movieId);
+        $movie->rating = $qualification;
+        $movie->save();
+        return $movie->id;
+    }
     
 }
