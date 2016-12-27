@@ -6,25 +6,12 @@ use App\Entities\Movie;
 class HomeController extends Controller {
 
     public function index(Movie $movie){
-        $lastMovies = $movie->where('release_date', '<=', date('Y-m-d'))
-                            ->orderBy('release_date', 'desc')
-                            ->take(15)->get();
-        $soonMovies = $movie->where('release_date', '<=', date('Y-m-d'))
-                            ->where('downloaded', false)
-                            ->inRandomOrder()->take(12)->get();
-        $pendingMovies = $movie->where('downloaded', true)
-                                ->where('seen', false)
-                                ->inRandomOrder()->take(12)->get();
-        $topRatedMovies = $movie->where('downloaded', true)
-                                ->orderBy('rating', 'desc')
-                                ->orderBy('release_date', 'desc')
-                                ->take(12)->get();
-        $recentlyDownloadedMovies = $movie->where('downloaded', true)
-                                ->orderBy('release_date', 'desc')
-                                ->take(12)->get();
-        $nextReleases = $movie->where('release_date', '>', date('Y-m-d'))
-                                ->orderBy('release_date')
-                                ->take(5)->get();
+        $lastMovies = $movie->last()->take(15)->get();
+        $soonMovies = $movie->soon()->inRandomOrder()->take(12)->get();
+        $pendingMovies = $movie->pending()->inRandomOrder()->take(12)->get();
+        $topRatedMovies = $movie->topRated()->take(12)->get();
+        $recentlyDownloadedMovies = $movie->downloaded()->take(12)->get();
+        $nextReleases = $movie->nextReleases()->take(5)->get();
         return view('index', compact('lastMovies', 'soonMovies', 'topRatedMovies', 'recentlyDownloadedMovies', 'pendingMovies', 'nextReleases'));
     }
 
