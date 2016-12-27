@@ -15,6 +15,6 @@ Route::group(['prefix' => 'movies'], function () {
     Route::get('downloaded', 'MoviesController@downloaded');
 });
 
-Route::get('qualify-movie/{movie_id}/{qualification}', 'HomeController@qualifyMovie');
+Route::get('qualify-movie/{movie_id}/{qualification}', 'HomeController@qualifyMovie')->name('qualify-movie');
 
 Route::get('/', 'HomeController@index');

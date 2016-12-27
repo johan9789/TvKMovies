@@ -32,7 +32,6 @@ class HomeController extends Controller {
         $movie = Movie::findOrFail($movieId);
         $movie->rating = $qualification;
         $movie->save();
-        return $movie->id;
     }
     
 }

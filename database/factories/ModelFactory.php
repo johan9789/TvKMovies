@@ -11,7 +11,7 @@
 |
 */
 
-$factory->define(App\User::class, function (Faker\Generator $faker) {
+$factory->define(App\User::class, function(Faker\Generator $faker){
     static $password;
 
     return [
@@ -19,5 +19,14 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10),
+    ];
+});
+
+$factory->define(App\Entities\Movie::class, function(Faker\Generator $faker){
+    return [
+        'id' => 1,
+        'name' => $faker->name,
+        'other_name' => $faker->name,
+        'rating' => 4,
     ];
 });
