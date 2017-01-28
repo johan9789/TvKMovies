@@ -149,32 +149,7 @@ $('.toggle').click(function(){
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Genres <b class="caret"></b></a>
                             <ul class="dropdown-menu multi-column columns-3">
-                                <li>
-                                    <div class="col-sm-4">
-                                        <ul class="multi-column-dropdown" id="ul_genres_list" data-url="{{ route('api.genres.index') }}">
-                                        </ul>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <ul class="multi-column-dropdown">
-                                            <li><a href="genres.html">Adventure</a></li>
-                                            <li><a href="comedy.html">Comedy</a></li>
-                                            <li><a href="genres.html">Documentary</a></li>
-                                            <li><a href="genres.html">Fantasy</a></li>
-                                            <li><a href="genres.html">Thriller</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <ul class="multi-column-dropdown">
-                                            <li><a href="genres.html">Animation</a></li>
-                                            <li><a href="genres.html">Costume</a></li>
-                                            <li><a href="genres.html">Drama</a></li>
-                                            <li><a href="genres.html">History</a></li>
-                                            <li><a href="genres.html">Musical</a></li>
-                                            <li><a href="genres.html">Psychological</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </li>
+                                <li id="ul_genres_list" data-url="{{ route('api.genres.index', ['ordered' => 1]) }}"></li>
                             </ul>
                         </li>
                         <li><a href="series.html">tv - series</a></li>

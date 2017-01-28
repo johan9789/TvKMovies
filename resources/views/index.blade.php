@@ -9,7 +9,7 @@
             <li>
                 <img src="{{ URL::asset(config('paths.MOVIE_BIG_COVER').$movie->big_cover) }}" alt="">
                 <p class='title'>{{ $movie->name }}</p>
-                <p class='description'> {{ $movie->synopsis }}</p>
+                <p class='description'> {{ date('d/m/Y', strtotime($movie->release_date)) }} <br>{{ $movie->synopsis }}</p>
             </li>
         @endforeach
 	</ul>

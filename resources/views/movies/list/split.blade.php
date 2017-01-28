@@ -25,13 +25,7 @@
             </div>
         </div>
         <div class="ribben">
-            <p>
-                @if($movie->downloaded)
-                    @if($movie->seen)✔@else✘@endif
-                @else
-                    SOON
-                @endif
-            </p>
+            <p>{{ $movie->status }}</p>
         </div>
     </div>
     @if(($index + 1) % 6 == 0)

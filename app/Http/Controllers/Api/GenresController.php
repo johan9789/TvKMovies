@@ -12,8 +12,27 @@ class GenresController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Genre $genre){
-        return $genre->all();
+    public function index(Genre $genre, Request $request){
+        $genres = $genre->orderBy('name')->get();
+
+        if($request->get('ordered') == 1){
+            $orderedGenres = [];
+
+            $index = 0;
+            $new_index = 0;
+
+            for($i=0;$i<$genres->count(); $i++){
+                $orderedGenres[$index][$new_index] = $genres[$i];
+                $new_index += 1;
+
+                if(($i + 1) % 5 == 0){
+                    $index += 1;
+                    $new_index = 0;
+                }
+            }
+            return $orderedGenres;
+        }
+        return $genres;
     }
 
     /**

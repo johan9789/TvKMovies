@@ -3,9 +3,19 @@ $(function(){
 
     $.getJSON($('#ul_genres_list').attr('data-url'), function(data){
         var content = '';
-        $.each(data, function(key, value){
-            content += '<li><a href="#">' + value.name +'</a></li>';
-        });
+        for(var j=0;j<data.length;j++){
+            content += '<div class="col-sm-4">';
+            content += '<ul class="multi-column-dropdown">';
+            for(var k=0;k<data[j].length;k++){
+                content += '<li>';
+                content += '<a href="#">';
+                content += data[j][k].name;
+                content += '</a>';
+                content += '</li>';
+            }
+            content += '</ul>';
+            content += '</div>';
+        }
         $('#ul_genres_list').html(content);
     });
 
@@ -23,7 +33,6 @@ $(function(){
             $.each(star_to_movie_siblings, function(index, value){
                 var a = $('> a', value);
                 var i = $('> i', a);
-
                 if(a.attr('data-qualification') <= qualification){
                     i.attr('class', 'fa fa-star');
                 } else {

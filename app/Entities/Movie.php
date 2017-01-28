@@ -8,6 +8,7 @@ class Movie extends Model {
 	use SoftDeletes;
 
 	protected $dates = ['deleted_at'];
+    protected $hidden = ['created_at', 'updated_at', 'deleted_at'];
 
 	public function file_type(){
 		return $this->belongsTo('App\Entities\FileType');
@@ -20,6 +21,10 @@ class Movie extends Model {
 	public function country(){
 		return $this->belongsTo('App\Entities\Country');
 	}
+
+	public function getStatusAttribute(){
+        return $this->downloaded ? ($this->seen ? '✔' : '✘') : ($this->seen ? '👁' : 'SOON');
+    }
     
     public function scopeDownloaded(){
         return $this->where('downloaded', true)->orderBy('release_date', 'desc');
@@ -30,15 +35,15 @@ class Movie extends Model {
     }
     
     public function scopeTopRated(){
-        return $this->where('downloaded', true)->orderBy('rating', 'desc')->orderBy('release_date', 'desc');
+        return $this->orderBy('rating', 'desc')->orderBy('release_date', 'desc');
     }
 
     public function scopeNextReleases(){
-        return $this->where('release_date', '>', date('Y-m-d'))->orderBy('release_date');
+        return $this->where('release_date', '>=', date('Y-m-d'))->orderBy('release_date');
     }
 
     public function scopeSoon(){
-        return $this->where('release_date', '<=', date('Y-m-d'))->where('downloaded', false);
+        return $this->where('release_date', '<', date('Y-m-d'))->where('downloaded', false);
     }
 
     public function scopeLast(){
