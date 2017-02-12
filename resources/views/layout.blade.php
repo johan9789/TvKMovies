@@ -149,7 +149,7 @@ $('.toggle').click(function(){
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Genres <b class="caret"></b></a>
                             <ul class="dropdown-menu multi-column columns-3">
-                                <li id="ul_genres_list" data-url="{{ route('api.genres.index', ['ordered' => 1]) }}"></li>
+                                <li id="ul_genres_list" data-url="{{ route('api.genres.index', ['ordered' => 5]) }}"></li>
                             </ul>
                         </li>
                         <li><a href="series.html">tv - series</a></li>

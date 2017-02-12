@@ -3,33 +3,24 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Components\Splitter;
 
 use App\Entities\Genre;
 
 class GenresController extends Controller {
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Genre $genre, Request $request){
+    public function index(Genre $genre, Request $request, Splitter $splitter){
         $genres = $genre->orderBy('name')->get();
 
-        if($request->get('ordered') == 1){
-            $orderedGenres = [];
+        $ordered = $request->get('ordered');
 
-            $index = 0;
-            $new_index = 0;
-
-            for($i=0;$i<$genres->count(); $i++){
-                $orderedGenres[$index][$new_index] = $genres[$i];
-                $new_index += 1;
-
-                if(($i + 1) % 5 == 0){
-                    $index += 1;
-                    $new_index = 0;
-                }
-            }
+        if($ordered){
+            $orderedGenres = $splitter->generate($genres, true, $ordered);
             return $orderedGenres;
         }
         return $genres;
