@@ -2,17 +2,12 @@
 
 @section('content')
 
-<!-- /w3l-medile-movies-grids -->
 <div class="general-agileits-w3l">
 	<div class="w3l-medile-movies-grids">
-		<!-- /movie-browse-agile -->
 		<div class="movie-browse-agile">
-			<!--/browse-agile-w3ls -->
 			<div class="browse-agile-w3ls general-w3ls">
 				<div class="tittle-head">
-					<!-- while... -->
 					<h4 class="latest-text">{{ $title }} Movies </h4>
-					<!-- while... -->
 					<div class="container">
 						<div class="agileits-single-top">
 							<ol class="breadcrumb">
@@ -61,13 +56,10 @@
 					</div>
 				</div>
 			</div>
-			<!--//browse-agile-w3ls -->
 			<div class="blog-pagenat-wthree">
 				@include('movies.pagination', ['paginator' => $movies])
 			</div>
 		</div>
-		<!-- //movie-browse-agile -->
-		<!--body wrapper start-->
 		<div class="review-slider">
 		 	<h4 class="latest-text">Random Movies</h4>
 		   	<div class="container">
@@ -76,12 +68,9 @@
 						@include('movies.list.carousel', ['movies' => $randomMovies])
 					</div>
 				</div>
-			   	<!--body wrapper end-->
 			</div>
 		</div>
 	</div>
-	<!-- //w3l-medile-movies-grids -->
 </div>
-<!-- //comedy-w3l-agileits -->
 
 @endsection
