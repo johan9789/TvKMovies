@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="tvkMoviesApp">
 <head>
 <title>TvK Movies</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -45,6 +45,8 @@ jQuery(document).ready(function($){
 });
 </script>
 <script type="text/javascript" src="{{ URL::asset('app/js/layout.js') }}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script type="text/javascript" src="{{ URL::asset('app/angular/app.js') }}"></script>
 @yield('scripts')
 </head>
 <body>
@@ -143,7 +145,7 @@ $('.toggle').click(function(){
                 </button>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+            <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1" ng-controller="mainMenuController">
                 <nav>
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="{{ url('') }}">Home</a></li>
@@ -175,20 +177,44 @@ $('.toggle').click(function(){
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Genres <b class="caret"></b></a>
                             <ul class="dropdown-menu multi-column columns-3">
-                                <li id="ul_genres_list" data-url="{{ route('api.genres.index', ['ordered' => 5]) }}"></li>
+                                <li id="genres_list" data-url="{{ route('api.genres.index', ['ordered' => 5]) }}">
+                                    <div class="col-sm-4" ng-repeat="genreGroup in genresList">
+                                        <ul class="multi-column-dropdown">
+                                            <li ng-repeat="genre in genreGroup">
+                                                <a href="#">[[ genre.name ]]</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
                             </ul>
                         </li>
 
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Quality <b class="caret"></b></a>
                             <ul class="dropdown-menu multi-column columns-3">
-                                <li id="ul_qualitiy_list" data-url="{{ route('api.qualities.index', ['ordered' => 5]) }}"></li>
+                                <li id="qualitiy_list" data-url="{{ route('api.qualities.index', ['ordered' => 5]) }}">
+                                    <div class="col-sm-4" ng-repeat="qualityGroup in qualityList">
+                                        <ul class="multi-column-dropdown">
+                                            <li ng-repeat="quality in qualityGroup">
+                                                <a href="{{ URL::to('movies/quality/[[ quality ]]') }}" ng-model="quality">[[ quality ]]</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
                             </ul>
                         </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Country <b class="caret"></b></a>
                             <ul class="dropdown-menu multi-column columns-3">
-                                <li id="ul_countries_list" data-url="{{ route('api.countries.index', ['ordered' => 5]) }}"></li>
+                                <li id="country_list" data-url="{{ route('api.countries.index', ['ordered' => 5]) }}">
+                                    <div class="col-sm-4" ng-repeat="countryGroup in countryList">
+                                        <ul class="multi-column-dropdown">
+                                            <li ng-repeat="country in countryGroup">
+                                                <a href="#">[[ country.name ]]</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
                             </ul>
                         </li>
                         <!-- <li><a href="series.html">tv - series</a></li> -->
