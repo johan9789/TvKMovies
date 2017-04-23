@@ -45,6 +45,7 @@ jQuery(document).ready(function($){
 });
 </script>
 <script type="text/javascript" src="{{ URL::asset('app/js/layout.js') }}"></script>
+@yield('scripts')
 </head>
 <body>
 
@@ -147,47 +148,51 @@ $('.toggle').click(function(){
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="{{ url('') }}">Home</a></li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Genres <b class="caret"></b></a>
-                            <ul class="dropdown-menu multi-column columns-3">
-                                <li id="ul_genres_list" data-url="{{ route('api.genres.index', ['ordered' => 5]) }}"></li>
-                            </ul>
-                        </li>
-                        <li><a href="series.html">tv - series</a></li>
-                        <li><a href="news.html">news</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Country <b class="caret"></b></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Movies <b class="caret"></b></a>
                             <ul class="dropdown-menu multi-column columns-3">
                                 <li>
                                     <div class="col-sm-4">
                                         <ul class="multi-column-dropdown">
-                                            <li><a href="genres.html">Asia</a></li>
-                                            <li><a href="genres.html">France</a></li>
-                                            <li><a href="genres.html">Taiwan</a></li>
-                                            <li><a href="genres.html">United States</a></li>
+                                            <li><a href="{{ route('movies.downloaded') }}" target="_blank">Downloaded</a></li>
+                                            <li><a href="{{ route('movies.pending') }}" target="_blank">Pending</a></li>
                                         </ul>
                                     </div>
                                     <div class="col-sm-4">
                                         <ul class="multi-column-dropdown">
-                                            <li><a href="genres.html">China</a></li>
-                                            <li><a href="genres.html">HongCong</a></li>
-                                            <li><a href="genres.html">Japan</a></li>
-                                            <li><a href="genres.html">Thailand</a></li>
+                                            <li><a href="{{ route('movies.soon') }}" target="_blank">Soon</a></li>
+                                            <li><a href="{{ route('movies.future') }}" target="_blank">Future</a></li>
                                         </ul>
                                     </div>
                                     <div class="col-sm-4">
                                         <ul class="multi-column-dropdown">
-                                            <li><a href="genres.html">Euro</a></li>
-                                            <li><a href="genres.html">India</a></li>
-                                            <li><a href="genres.html">Korea</a></li>
-                                            <li><a href="genres.html">United Kingdom</a></li>
+                                            <li><a href="{{ route('movies.quality') }}" target="_blank">Quality</a></li>
                                         </ul>
                                     </div>
                                     <div class="clearfix"></div>
                                 </li>
                             </ul>
                         </li>
-                        <li><a href="short-codes.html">Short Codes</a></li>
-                        <li><a href="list.html">A - z list</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Genres <b class="caret"></b></a>
+                            <ul class="dropdown-menu multi-column columns-3">
+                                <li id="ul_genres_list" data-url="{{ route('api.genres.index', ['ordered' => 5]) }}"></li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Quality <b class="caret"></b></a>
+                            <ul class="dropdown-menu multi-column columns-3">
+                                <li id="ul_qualitiy_list" data-url="{{ route('api.qualities.index', ['ordered' => 5]) }}"></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Country <b class="caret"></b></a>
+                            <ul class="dropdown-menu multi-column columns-3">
+                                <li id="ul_countries_list" data-url="{{ route('api.countries.index', ['ordered' => 5]) }}"></li>
+                            </ul>
+                        </li>
+                        <!-- <li><a href="series.html">tv - series</a></li> -->
+                        <!-- <li><a href="list.html">A - z list</a></li> -->
                     </ul>
                 </nav>
             </div>
@@ -283,6 +288,7 @@ $(document).ready(function(){
 <!-- //here ends scrolling icon -->
 
 <span id="url_app" data-url="{{ url('') }}"></span>
+<span id="url_movie_list_update_status" data-url="{{ route('api.movie_list.update_status') }}"></span>
 
 </body>
 </html>

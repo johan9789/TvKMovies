@@ -46,6 +46,10 @@ class Movie extends Model {
         return $this->where('release_date', '<', date('Y-m-d'))->where('downloaded', false);
     }
 
+    public function scopeFuture(){
+        return $this->where('release_date', '>', date('Y-m-d'))->where('downloaded', false);
+    }
+
     public function scopeLast(){
         return $this->where('release_date', '<=', date('Y-m-d'))->orderBy('release_date', 'desc');
     }

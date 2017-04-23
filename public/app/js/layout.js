@@ -19,6 +19,42 @@ $(function(){
         $('#ul_genres_list').html(content);
     });
 
+    $.getJSON($('#ul_countries_list').attr('data-url'), function(data){
+        var content = '';
+        for(var j=0;j<data.length;j++){
+            content += '<div class="col-sm-4">';
+            content += '<ul class="multi-column-dropdown">';
+            for(var k=0;k<data[j].length;k++){
+                content += '<li>';
+                content += '<a href="#">';
+                content += data[j][k].name;
+                content += '</a>';
+                content += '</li>';
+            }
+            content += '</ul>';
+            content += '</div>';
+        }
+        $('#ul_countries_list').html(content);
+    });
+
+    $.getJSON($('#ul_qualitiy_list').attr('data-url'), function(data){
+        var content = '';
+        for(var j=0;j<data.length;j++){
+            content += '<div class="col-sm-4">';
+            content += '<ul class="multi-column-dropdown">';
+            for(var k=0;k<data[j].length;k++){
+                content += '<li>';
+                content += '<a href="movies/quality/' + data[j][k] + '">';
+                content += data[j][k];
+                content += '</a>';
+                content += '</li>';
+            }
+            content += '</ul>';
+            content += '</div>';
+        }
+        $('#ul_qualitiy_list').html(content);
+    });
+
     $(document).on('click', '#star_to_movie', function(e){
         e.preventDefault();
         var movie_id = $(this).attr('data-id');
@@ -41,6 +77,35 @@ $(function(){
             });
         });
 
+    });
+
+    $(document).on('mouseover', '#update_movie_status', function(){
+        var current_status = $(this).attr('data-current-status');
+
+        var possible_status = '';
+
+        if(current_status == '✘'){
+            possible_status = '✔';
+        } else if(current_status == '✔'){
+            possible_status = '✘';
+        }
+
+        $(this).children('p').html(possible_status);
+    });
+
+    $(document).on('mouseleave', '#update_movie_status', function(){
+        var current_status = $(this).attr('data-current-status');
+        $(this).children('p').html(current_status);
+    });
+
+    $(document).on('click', '#update_movie_status', function(){
+        var url = $('#url_movie_list_update_status').attr('data-url');
+        var current_status = $(this).attr('data-current-status');
+        $.post(url, {'status': current_status, 'movie_id': $(this).attr('data-movie-id')}, function(movie){
+            var new_status = movie.seen == 1 ? '✔' : '✘';
+
+            $(this).children('p').html(new_status);
+        });
     });
 
 });

@@ -12,7 +12,11 @@
 */
 
 Route::group(['prefix' => 'movies'], function () {
-    Route::get('downloaded', 'MoviesController@downloaded');
+	Route::get('quality/{quality?}', 'MoviesController@quality')->name('movies.quality');
+	Route::get('future', 'MoviesController@future')->name('movies.future');
+	Route::get('soon', 'MoviesController@soon')->name('movies.soon');
+	Route::get('pending', 'MoviesController@pending')->name('movies.pending');	
+    Route::get('downloaded', 'MoviesController@downloaded')->name('movies.downloaded');
 });
 
 Route::get('qualify-movie/{movie_id}/{qualification}', 'HomeController@qualifyMovie')->name('qualify-movie');

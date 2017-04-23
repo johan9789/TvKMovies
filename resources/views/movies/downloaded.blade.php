@@ -10,7 +10,9 @@
 			<!--/browse-agile-w3ls -->
 			<div class="browse-agile-w3ls general-w3ls">
 				<div class="tittle-head">
-					<h4 class="latest-text">Downloaded Movies </h4>
+					<!-- while... -->
+					<h4 class="latest-text">{{ $title }} Movies </h4>
+					<!-- while... -->
 					<div class="container">
 						<div class="agileits-single-top">
 							<ol class="breadcrumb">

@@ -24,7 +24,7 @@
                 <div class="clearfix"></div>
             </div>
         </div>
-        <div class="ribben">
+        <div class="ribben" id="update_movie_status" data-current-status="{{ $movie->status }}" data-movie-id="{{ $movie->id }}" style="cursor: pointer;">
             <p>{{ $movie->status }}</p>
         </div>
     </div>

@@ -4,7 +4,7 @@
 
 <!-- banner -->
 <div id="slidey" style="display: none;">
-	<ul>
+	<ul id="ul_next_releases">
         @foreach($nextReleases as $movie)
             <li>
                 <img src="{{ URL::asset(config('paths.MOVIE_BIG_COVER').$movie->big_cover) }}" alt="">
@@ -53,8 +53,8 @@ $(".slidey-list-description").dotdotdot();
 				<li role="presentation"><a href="#imdb" role="tab" id="imdb-tab" data-toggle="tab" aria-controls="imdb" aria-expanded="false">Recently Downloaded</a></li>
 			</ul>
 			<div id="myTabContent" class="tab-content">
-				<div role="tabpanel" class="tab-pane fade active in" id="home" aria-labelledby="home-tab">
-                    @include('movies.list.split', ['movies' => $soonMovies])
+				<div role="tabpanel" class="tab-pane fade active in" id="home" aria-labelledby="home-tab" data-url="{{ route('api.movie_list.soon') }}">
+					@include('movies.list.split', ['movies' => $soonMovies])
 				</div>
 				<div role="tabpanel" class="tab-pane fade" id="profile" aria-labelledby="profile-tab">
                     @include('movies.list.split', ['movies' => $pendingMovies])
