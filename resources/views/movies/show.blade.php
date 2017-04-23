@@ -24,7 +24,7 @@
 				</div>
 			 	<div class="container">
 					<div class="browse-inner-come-agile-w3">
-						@foreach($downloadedMovies as $index => $movie)
+						@foreach($movies as $index => $movie)
 							<div class="col-md-2 w3l-movie-gride-agile">
 								<a href="{{ $movie->trailer_url }}" class="hvr-shutter-out-horizontal" @if($movie->trailer_url)target="_blank"@endif>
 								 	<img src="{{ URL::asset('images/covers/movies/'.$movie->cover) }}" title="{{ $movie->other_name }}" alt=" " width="182" height="268">
@@ -63,7 +63,7 @@
 			</div>
 			<!--//browse-agile-w3ls -->
 			<div class="blog-pagenat-wthree">
-				@include('movies.pagination', ['paginator' => $downloadedMovies])
+				@include('movies.pagination', ['paginator' => $movies])
 			</div>
 		</div>
 		<!-- //movie-browse-agile -->

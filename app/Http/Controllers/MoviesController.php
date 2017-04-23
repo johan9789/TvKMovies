@@ -4,53 +4,47 @@ namespace App\Http\Controllers;
 use App\Entities\Movie;
 
 class MoviesController extends Controller {
+    private $randomMovies;
+    private $viewPath;
+
+    public function __construct(Movie $movie){
+        $this->randomMovies = $movie->inRandomOrder()->take(9)->get();
+        $this->viewPath = 'movies.show';
+    }
 
     public function downloaded(Movie $movie){
-        $downloadedMovies = $movie->downloaded()->paginate(24);
-        $randomMovies = $movie->inRandomOrder()->take(9)->get();
-        // while...
+        $movies = $movie->downloaded()->paginate(24);
+        $randomMovies = $this->randomMovies;
         $title = 'Downloaded';
-        // while...
-        return view('movies.downloaded', compact('downloadedMovies', 'randomMovies', 'title'));
+        return view($this->viewPath, compact('movies', 'randomMovies', 'title'));
     }
-    
-    // while...
+
     public function pending(Movie $movie){
-        $downloadedMovies = $movie->pending()->orderBy('release_date', 'desc')->paginate(24);
-        $randomMovies = $movie->inRandomOrder()->take(9)->get();
-        // while...
+        $movies = $movie->pending()->orderBy('release_date', 'desc')->paginate(24);
+        $randomMovies = $this->randomMovies;
         $title = 'Pending';
-        // while...
-        return view('movies.downloaded', compact('downloadedMovies', 'randomMovies', 'title'));
+        return view($this->viewPath, compact('movies', 'randomMovies', 'title'));
     }
 
     public function soon(Movie $movie){
-        $downloadedMovies = $movie->soon()->orderBy('release_date', 'desc')->paginate(24);
-        $randomMovies = $movie->inRandomOrder()->take(9)->get();
-        // while...
+        $movies = $movie->soon()->orderBy('release_date', 'desc')->paginate(24);
+        $randomMovies = $this->randomMovies;
         $title = 'Soon';
-        // while...
-        return view('movies.downloaded', compact('downloadedMovies', 'randomMovies', 'title'));
+        return view($this->viewPath, compact('movies', 'randomMovies', 'title'));
     }
 
     public function future(Movie $movie){
-        $downloadedMovies = $movie->future()->orderBy('release_date', 'asc')->paginate(24);
-        $randomMovies = $movie->inRandomOrder()->take(9)->get();
-        // while...
+        $movies = $movie->future()->orderBy('release_date', 'asc')->paginate(24);
+        $randomMovies = $this->randomMovies;
         $title = 'Future';
-        // while...
-        return view('movies.downloaded', compact('downloadedMovies', 'randomMovies', 'title'));
+        return view($this->viewPath, compact('movies', 'randomMovies', 'title'));
     }
 
     public function quality(Movie $movie, $quality='1080p'){
-    	$downloadedMovies = $movie->downloaded()->where('quality', $quality)->paginate(24);
-    	$randomMovies = $movie->inRandomOrder()->take(9)->get();
-
+    	$movies = $movie->downloaded()->where('quality', $quality)->paginate(24);
+        $randomMovies = $this->randomMovies;
     	$title = $quality;
-
-    	return view('movies.downloaded', compact('downloadedMovies', 'randomMovies', 'title'));
+    	return view($this->viewPath, compact('movies', 'randomMovies', 'title'));
     }
-
-    // while...
 
 }
