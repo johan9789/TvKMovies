@@ -53,7 +53,7 @@ $(".slidey-list-description").dotdotdot();
 				<li role="presentation"><a href="#imdb" role="tab" id="imdb-tab" data-toggle="tab" aria-controls="imdb" aria-expanded="false">Recently</a></li>
 			</ul>
 			<div id="myTabContent" class="tab-content" >
-				<div role="tabpanel" class="tab-pane fade active in" id="home" aria-labelledby="home-tab" data-url="{{ route('api.movie_list.soon') }}">
+				<div role="tabpanel" class="tab-pane fade active in" id="home" aria-labelledby="home-tab">
 					<split-soon-movies></split-soon-movies>
 				</div>
 				<div role="tabpanel" class="tab-pane fade" id="profile" aria-labelledby="profile-tab">

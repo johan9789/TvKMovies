@@ -55,14 +55,14 @@ var url = {
         qualities: '{{ route('api.qualities.index') }}',
         countries: '{{ route('api.countries.index') }}',
         movieList: {
-            soon: '{{ route('api.movie_list.soon', ['limit' => 12]) }}',
-            pending: '{{ route('api.movie_list.pending', ['limit' => 12]) }}',
-            topRated: '{{ route('api.movie_list.top_rated', ['limit' => 12]) }}',
-            recently: '{{ route('api.movie_list.recently', ['limit' => 12]) }}',
-            nextReleases: '{{ route('api.movie_list.next_releases', ['limit' => 5]) }}'
+            soon: '{{ route('api.movie_list.index', ['scope' => 'soon']) }}',
+            pending: '{{ route('api.movie_list.index', ['scope' => 'pending']) }}',
+            topRated: '{{ route('api.movie_list.index', ['scope' => 'topRated']) }}',
+            recently: '{{ route('api.movie_list.index', ['scope' => 'downloaded']) }}',
+            nextReleases: '{{ route('api.movie_list.index', ['scope' => 'nextReleases']) }}'
         }
     }
-}
+};
 </script>
 </head>
 <body>

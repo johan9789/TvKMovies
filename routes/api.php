@@ -14,12 +14,7 @@ use Illuminate\Http\Request;
 */
 
 Route::group(['prefix' => 'movie-list'], function(){
-    Route::get('top-rated/{limit?}', 'Api\MovieListController@getTopRated')->name('api.movie_list.top_rated');
-    Route::get('recently/{limit?}', 'Api\MovieListController@getRecently')->name('api.movie_list.recently');
-    Route::get('random/{limit?}', 'Api\MovieListController@getRandom')->name('api.movie_list.random');
-    Route::get('next-releases', 'Api\MovieListController@getNextReleases')->name('api.movie_list.next_releases');
-    Route::get('pending/{limit?}', 'Api\MovieListController@getPending')->name('api.movie_list.pending');
-    Route::get('soon/{limit?}', 'Api\MovieListController@getSoon')->name('api.movie_list.soon');
+    Route::get('', 'Api\MovieListController@index')->name('api.movie_list.index');
     Route::post('update-status', 'Api\MovieListController@postUpdateStatus')->name('api.movie_list.update_status');
 });
 

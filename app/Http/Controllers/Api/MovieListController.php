@@ -4,55 +4,58 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Entities\Movie;
+use BadMethodCallException;
 
 class MovieListController extends Controller {
 
-    public function getNextReleases(Movie $movie, Request $request){
+    public function index(Movie $movie, Request $request){
+        $scope = $request->get('scope');
         $limit = $request->get('limit');
+        $count = $request->get('count');
 
-        $nextReleases = $movie->nextReleases();
-
-        if($limit){
-            $nextReleases = $nextReleases->take($limit);
+        if($scope){
+            if($scope == 'random'){
+                $movies = $movie->inRandomOrder();
+            } else {
+                try {
+                    $movies = $movie->{$scope}();
+                    if($request->get('random')){
+                        $movies = $movies->inRandomOrder();
+                    }
+                } catch(BadMethodCallException $e){
+                    return response()->json(['error' => 'Movie list not available.']);
+                }
+            }
+            $movies = $movies->get();
+        } else {
+            $movies = $movie->all();
         }
 
-        return $nextReleases->get();
-    }
+        if($limit){
+            $movies = $movies->take($limit);
+        }
 
-    public function getSoon(Movie $movie, $limit=12){
-        return $movie->soon()->inRandomOrder()->take($limit)->get();
-    }
+        if($count){
+            $movies = $movies->count();
+        }
 
-    public function getPending(Movie $movie, $limit=12){
-        return $movie->pending()->inRandomOrder()->take($limit)->get();
-    }
-
-    public function getRandom(Movie $movie, $limit=9){
-        return $movie->inRandomOrder()->take($limit)->get();
-    }
-
-    public function getTopRated(Movie $movie, $limit=12){
-        return $movie->topRated()->take($limit)->get();
-    }
-
-    public function getRecently(Movie $movie, $limit=12){
-        return $movie->downloaded()->take($limit)->get();
+        return $movies;
     }
 
     public function postUpdateStatus(Request $request){
         $movie = Movie::findOrFail($request->get('movie_id'));
 
-        $current_status = $request->get('status');
+        $currentStatus = $request->get('status');
 
-        $possible_status = '';
+        $possibleStatus = '';
 
-        if($current_status == '✘'){
-            $possible_status = 1;
-        } else if($current_status == '✔'){
-            $possible_status = 0;
+        if($currentStatus == '✘'){
+            $possibleStatus = 1;
+        } else if($currentStatus == '✔'){
+            $possibleStatus = 0;
         }
 
-        $movie->seen = $possible_status;
+        $movie->seen = $possibleStatus;
         $movie->save();
         return $movie;
     }

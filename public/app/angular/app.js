@@ -21,7 +21,7 @@ app.directive('splitSoonMovies', function(){
     return {
         restrict : 'E',
         controller: function($scope, $http){
-            $http.get(url.api.movieList.soon).then(function(response){
+            $http.get(url.api.movieList.soon, {params: {random: true, limit: 12}}).then(function(response){
                 $scope.soonMovies = response.data;
             });
         },
@@ -33,7 +33,7 @@ app.directive('splitPendingMovies', function(){
     return {
         restrict : 'E',
         controller: function($scope, $http){
-            $http.get(url.api.movieList.pending).then(function(response){
+            $http.get(url.api.movieList.pending, {params: {random: true, limit: 12}}).then(function(response){
                 $scope.pendingMovies = response.data;
             });
         },
@@ -45,7 +45,7 @@ app.directive('splitTopRatedMovies', function(){
     return {
         restrict : 'E',
         controller: function($scope, $http){
-            $http.get(url.api.movieList.topRated).then(function(response){
+            $http.get(url.api.movieList.topRated, {params: {limit: 12}}).then(function(response){
                 $scope.topRatedMovies = response.data;
             });
         },
@@ -57,7 +57,7 @@ app.directive('splitRecentlyMovies', function(){
     return {
         restrict : 'E',
         controller: function($scope, $http){
-            $http.get(url.api.movieList.recently).then(function(response){
+            $http.get(url.api.movieList.recently, {params: {limit: 12}}).then(function(response){
                 $scope.recentlyMovies = response.data;
             });
         },
