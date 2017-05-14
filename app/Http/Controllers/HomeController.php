@@ -7,12 +7,8 @@ class HomeController extends Controller {
 
     public function index(Movie $movie){
         $lastMovies = $movie->last()->take(15)->get();
-        $soonMovies = $movie->soon()->inRandomOrder()->take(12)->get();
-        $pendingMovies = $movie->pending()->inRandomOrder()->take(12)->get();
-        $topRatedMovies = $movie->topRated()->take(12)->get();
-        $recentlyDownloadedMovies = $movie->downloaded()->take(12)->get();
         $nextReleases = $movie->nextReleases()->take(5)->get();
-        return view('index', compact('lastMovies', 'soonMovies', 'topRatedMovies', 'recentlyDownloadedMovies', 'pendingMovies', 'nextReleases'));
+        return view('index', compact('lastMovies', 'nextReleases'));
     }
 
     public function qualifyMovie($movieId, $qualification){

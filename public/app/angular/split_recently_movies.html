@@ -1,0 +1,30 @@
+<div ng-repeat="movie in recentlyMovies track by $index">
+    <div class="col-md-2 w3l-movie-gride-agile">
+        <a href="[[ movie.trailer_url ]]" class="hvr-shutter-out-horizontal" target="[[ movie.trailer_url ? '_blank' : '']]">
+            <img ng-model="movie" src="images/covers/movies/[[ movie.cover ]]" title="[[ movie.other_name ]]" class="img-responsive" alt=" " width="182" height="268">
+            <div class="w3l-action-icon"><i class="fa fa-play-circle" aria-hidden="true"></i></div>
+        </a>
+        <div class="mid-1 agileits_w3layouts_mid_1_home">
+            <div class="w3l-movie-text">
+                <h6><a href="#">[[ movie.name ]]</a></h6>
+            </div>
+            <div class="mid-2 agile_mid_2_home">
+                <p>[[ movie.release_year ]]</p>
+                <div class="block-stars">
+                    <ul class="w3l-ratings">
+                        <li ng-repeat="i in [1, 2, 3, 4, 5]">
+                            <a href="#" ng-model="movie" id="star_to_movie" data-qualification="[[ i ]]">
+                                <i id="i_star_to_movie" class="[[ movie.rating >= i ? 'fa fa-star' : 'fa fa-star-o' ]]" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <div class="ribben" id="update_movie_status" data-current-status="[[ movie.status ]]" data-movie-id="[[ movie.id ]]" style="    cursor: pointer;">
+            <p>[[ movie.status ]]</p>
+        </div>
+    </div>
+    <div class="clearfix" ng-if="($index + 1) % 6 == 0"></div>
+</div>

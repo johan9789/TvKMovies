@@ -48,6 +48,22 @@ jQuery(document).ready(function($){
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 <script type="text/javascript" src="{{ URL::asset('app/angular/app.js') }}"></script>
 @yield('scripts')
+<script type="text/javascript">
+var url = {
+    api: {
+        genres: '{{ route('api.genres.index') }}',
+        qualities: '{{ route('api.qualities.index') }}',
+        countries: '{{ route('api.countries.index') }}',
+        movieList: {
+            soon: '{{ route('api.movie_list.soon', ['limit' => 12]) }}',
+            pending: '{{ route('api.movie_list.pending', ['limit' => 12]) }}',
+            topRated: '{{ route('api.movie_list.top_rated', ['limit' => 12]) }}',
+            recently: '{{ route('api.movie_list.recently', ['limit' => 12]) }}',
+            nextReleases: '{{ route('api.movie_list.next_releases', ['limit' => 5]) }}'
+        }
+    }
+}
+</script>
 </head>
 <body>
 
@@ -145,7 +161,7 @@ $('.toggle').click(function(){
                 </button>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1" ng-controller="mainMenuController">
+            <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1" ng-controller="MainMenuController">
                 <nav>
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="{{ url('') }}">Home</a></li>
@@ -177,7 +193,7 @@ $('.toggle').click(function(){
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Genres <b class="caret"></b></a>
                             <ul class="dropdown-menu multi-column columns-3">
-                                <li id="genres_list" data-url="{{ route('api.genres.index', ['ordered' => 5]) }}">
+                                <li>
                                     <div class="col-sm-4" ng-repeat="genreGroup in genresList">
                                         <ul class="multi-column-dropdown">
                                             <li ng-repeat="genre in genreGroup">
@@ -192,7 +208,7 @@ $('.toggle').click(function(){
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Quality <b class="caret"></b></a>
                             <ul class="dropdown-menu multi-column columns-3">
-                                <li id="qualitiy_list" data-url="{{ route('api.qualities.index', ['ordered' => 5]) }}">
+                                <li>
                                     <div class="col-sm-4" ng-repeat="qualityGroup in qualityList">
                                         <ul class="multi-column-dropdown">
                                             <li ng-repeat="quality in qualityGroup">
@@ -206,7 +222,7 @@ $('.toggle').click(function(){
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Country <b class="caret"></b></a>
                             <ul class="dropdown-menu multi-column columns-3">
-                                <li id="country_list" data-url="{{ route('api.countries.index', ['ordered' => 5]) }}">
+                                <li>
                                     <div class="col-sm-4" ng-repeat="countryGroup in countryList">
                                         <ul class="multi-column-dropdown">
                                             <li ng-repeat="country in countryGroup">

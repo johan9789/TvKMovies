@@ -9,6 +9,7 @@ class Movie extends Model {
 
 	protected $dates = ['deleted_at'];
     protected $hidden = ['created_at', 'updated_at', 'deleted_at'];
+    protected $appends = ['status', 'release_year'];
 
 	public function file_type(){
 		return $this->belongsTo('App\Entities\FileType');
@@ -24,6 +25,10 @@ class Movie extends Model {
 
 	public function getStatusAttribute(){
         return $this->downloaded ? ($this->seen ? '✔' : '✘') : ($this->seen ? '👁' : 'SOON');
+    }
+
+    public function getReleaseYearAttribute(){
+        return date('Y', strtotime($this->release_date));
     }
     
     public function scopeDownloaded(){

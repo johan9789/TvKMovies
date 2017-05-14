@@ -50,20 +50,20 @@ $(".slidey-list-description").dotdotdot();
 				<li role="presentation" class="active"><a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">Soon</a></li>
 				<li role="presentation"><a href="#profile" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile" aria-expanded="false">Pending</a></li>
 				<li role="presentation"><a href="#rating" id="rating-tab" role="tab" data-toggle="tab" aria-controls="rating" aria-expanded="true">Top Rating</a></li>
-				<li role="presentation"><a href="#imdb" role="tab" id="imdb-tab" data-toggle="tab" aria-controls="imdb" aria-expanded="false">Recently Downloaded</a></li>
+				<li role="presentation"><a href="#imdb" role="tab" id="imdb-tab" data-toggle="tab" aria-controls="imdb" aria-expanded="false">Recently</a></li>
 			</ul>
-			<div id="myTabContent" class="tab-content">
+			<div id="myTabContent" class="tab-content" >
 				<div role="tabpanel" class="tab-pane fade active in" id="home" aria-labelledby="home-tab" data-url="{{ route('api.movie_list.soon') }}">
-					@include('movies.list.split', ['movies' => $soonMovies])
+					<split-soon-movies></split-soon-movies>
 				</div>
 				<div role="tabpanel" class="tab-pane fade" id="profile" aria-labelledby="profile-tab">
-                    @include('movies.list.split', ['movies' => $pendingMovies])
+					<split-pending-movies></split-pending-movies>
 				</div>
 				<div role="tabpanel" class="tab-pane fade" id="rating" aria-labelledby="rating-tab">
-                    @include('movies.list.split', ['movies' => $topRatedMovies])
+					<split-top-rated-movies></split-top-rated-movies>
 				</div>
 				<div role="tabpanel" class="tab-pane fade" id="imdb" aria-labelledby="imdb-tab">
-                    @include('movies.list.split', ['movies' => $recentlyDownloadedMovies])
+                    <split-recently-movies></split-recently-movies>
 				</div>
 			</div>
 		</div>

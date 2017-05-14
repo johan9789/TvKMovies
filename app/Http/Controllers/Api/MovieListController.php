@@ -7,12 +7,36 @@ use App\Entities\Movie;
 
 class MovieListController extends Controller {
 
-    public function getNextReleases(Movie $movie, $limit=5){
-        return $movie->nextReleases()->take($limit)->get();
+    public function getNextReleases(Movie $movie, Request $request){
+        $limit = $request->get('limit');
+
+        $nextReleases = $movie->nextReleases();
+
+        if($limit){
+            $nextReleases = $nextReleases->take($limit);
+        }
+
+        return $nextReleases->get();
     }
 
     public function getSoon(Movie $movie, $limit=12){
         return $movie->soon()->inRandomOrder()->take($limit)->get();
+    }
+
+    public function getPending(Movie $movie, $limit=12){
+        return $movie->pending()->inRandomOrder()->take($limit)->get();
+    }
+
+    public function getRandom(Movie $movie, $limit=9){
+        return $movie->inRandomOrder()->take($limit)->get();
+    }
+
+    public function getTopRated(Movie $movie, $limit=12){
+        return $movie->topRated()->take($limit)->get();
+    }
+
+    public function getRecently(Movie $movie, $limit=12){
+        return $movie->downloaded()->take($limit)->get();
     }
 
     public function postUpdateStatus(Request $request){
@@ -31,7 +55,6 @@ class MovieListController extends Controller {
         $movie->seen = $possible_status;
         $movie->save();
         return $movie;
-
     }
 
 }
