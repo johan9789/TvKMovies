@@ -14,7 +14,7 @@ use Illuminate\Http\Request;
 */
 
 Route::group(['prefix' => 'movie-list'], function(){
-    Route::get('', 'Api\MovieListController@index')->name('api.movie_list.index');
+    Route::get('{scope?}', 'Api\MovieListController@index')->name('api.movie_list.index');
     Route::post('update-status', 'Api\MovieListController@postUpdateStatus')->name('api.movie_list.update_status');
 });
 

@@ -8,8 +8,7 @@ use BadMethodCallException;
 
 class MovieListController extends Controller {
 
-    public function index(Movie $movie, Request $request){
-        $scope = $request->get('scope');
+    public function index(Movie $movie, Request $request, $scope=null){
         $limit = $request->get('limit');
         $count = $request->get('count');
 
