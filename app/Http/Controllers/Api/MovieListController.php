@@ -9,6 +9,8 @@ use BadMethodCallException;
 class MovieListController extends Controller {
 
     public function index(Movie $movie, Request $request, $scope=null){
+        $orderBy = $request->get('order_by');
+        $paginate = $request->get('paginate');
         $limit = $request->get('limit');
         $count = $request->get('count');
 
@@ -18,12 +20,20 @@ class MovieListController extends Controller {
             } else {
                 try {
                     $movies = $movie->{$scope}();
+
+                    if($orderBy){
+                        $movies = $movies->orderBy($orderBy, $request->get('mode', 'asc'));
+                    }
+
                     if($request->get('random')){
                         $movies = $movies->inRandomOrder();
                     }
                 } catch(BadMethodCallException $e){
                     return response()->json(['error' => 'Movie list not available.']);
                 }
+            }
+            if($paginate){
+                return $movies->paginate($paginate);
             }
             $movies = $movies->get();
         } else {

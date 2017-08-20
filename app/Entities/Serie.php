@@ -1,12 +1,10 @@
 <?php
-
 namespace App\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Serie extends Model {
-
 	protected $table = 'series';
 	public $timestamps = true;
 
@@ -14,18 +12,15 @@ class Serie extends Model {
 
 	protected $dates = ['deleted_at'];
 
-	public function genre()
-	{
+	public function genre(){
 		return $this->belongsTo('App\Entities\Genre');
 	}
 
-	public function country()
-	{
+	public function country(){
 		return $this->belongsTo('App\Entities\Country');
 	}
 
-	public function seasons()
-	{
+	public function seasons(){
 		return $this->hasMany('App\Entities\Season');
 	}
 

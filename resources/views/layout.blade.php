@@ -55,12 +55,17 @@ var url = {
         qualities: '{{ route('api.qualities.index') }}',
         countries: '{{ route('api.countries.index') }}',
         movieList: {
+            all: '{{ route('api.movie_list.index') }}',
             soon: '{{ route('api.movie_list.index', ['scope' => 'soon']) }}',
             pending: '{{ route('api.movie_list.index', ['scope' => 'pending']) }}',
             topRated: '{{ route('api.movie_list.index', ['scope' => 'topRated']) }}',
-            recently: '{{ route('api.movie_list.index', ['scope' => 'downloaded']) }}',
-            nextReleases: '{{ route('api.movie_list.index', ['scope' => 'nextReleases']) }}'
+            downloaded: '{{ route('api.movie_list.index', ['scope' => 'downloaded']) }}',
+            nextReleases: '{{ route('api.movie_list.index', ['scope' => 'nextReleases']) }}',
+            future: '{{ route('api.movie_list.index', ['scope' => 'future']) }}'
         }
+    },
+    path: {
+        movieCover: '{{ URL::asset(config('paths.MOVIE_COVER')) }}'
     }
 };
 </script>
@@ -81,7 +86,7 @@ var url = {
         </div>
         <div class="w3l_sign_in_register">
             <ul>
-                <li><i class="fa fa-phone" aria-hidden="true"></i> (+000) 123 345 653</li>
+                <!-- <li><i class="fa fa-phone" aria-hidden="true"></i> (+000) 123 345 653</li >--> 
                 <li><a href="#" data-toggle="modal" data-target="#myModal">Login</a></li>
             </ul>
         </div>

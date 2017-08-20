@@ -11,7 +11,7 @@ class Movie extends Model {
     protected $hidden = ['created_at', 'updated_at', 'deleted_at'];
     protected $appends = ['status', 'release_year'];
 
-	public function file_type(){
+	public function fileType(){
 		return $this->belongsTo('App\Entities\FileType');
 	}
 
@@ -52,7 +52,7 @@ class Movie extends Model {
     }
 
     public function scopeFuture(){
-        return $this->where('release_date', '>', date('Y-m-d'))->where('downloaded', false);
+        return $this->where('release_date', '>', date('Y-m-d'));//->where('downloaded', false);
     }
 
     public function scopeLast(){

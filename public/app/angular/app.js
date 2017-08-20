@@ -17,6 +17,47 @@ app.controller('MainMenuController', ['$scope', '$http', function($scope, $http)
     });
 }]);
 
+
+function up(){
+    var arriba;
+    if(document.body.scrollTop != 0 || document.documentElement.scrollTop != 0){
+        window.scrollBy(0, -15);
+        arriba = setTimeout('up()', 10);
+    } else {
+        clearTimeout(arriba);
+    }
+}
+
+app.controller('ShowController', ['$scope', '$http', function($scope, $http){
+
+    $http.get(url.api.movieList[title], {
+        params: {order_by: 'release_date', mode: 'desc', paginate: 24, page: 1}
+    }).then(function(response){
+        $scope.movies = response.data;
+
+        $scope.pages = [];
+        for(var i=1;i<=$scope.movies.last_page;i++){
+            $scope.pages.push(i);
+        }
+    });
+
+    $scope.changePage = function(page){
+
+        $http.get(url.api.movieList[title], {
+            params: {order_by: 'release_date', mode: 'desc', paginate: 24, page: page}
+        }).then(function(response){
+            $scope.movies = response.data;
+        });
+
+        up();
+    };
+
+    $scope.coverPath = function(cover){
+        return url.path.movieCover + '/' + cover;
+    };
+
+}]);
+
 app.directive('splitSoonMovies', function(){
     return {
         restrict : 'E',
@@ -57,7 +98,7 @@ app.directive('splitRecentlyMovies', function(){
     return {
         restrict : 'E',
         controller: function($scope, $http){
-            $http.get(url.api.movieList.recently, {params: {limit: 12}}).then(function(response){
+            $http.get(url.api.movieList.downloaded, {params: {limit: 12}}).then(function(response){
                 $scope.recentlyMovies = response.data;
             });
         },

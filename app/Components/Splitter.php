@@ -3,7 +3,7 @@ namespace App\Components;
 
 class Splitter {
 
-    public function generate($collection, $isEloquent=False, $limit=1){
+    public function generate($collection, $isEloquent=false, $limit=1){
         $splittedValues = [];
 
         $index = 0;
