@@ -54,16 +54,16 @@ $(".slidey-list-description").dotdotdot();
 			</ul>
 			<div id="myTabContent" class="tab-content" >
 				<div role="tabpanel" class="tab-pane fade active in" id="home" aria-labelledby="home-tab">
-					<split-soon-movies></split-soon-movies>
+					<split-movies scope="soon"></split-movies>
 				</div>
 				<div role="tabpanel" class="tab-pane fade" id="profile" aria-labelledby="profile-tab">
-					<split-pending-movies></split-pending-movies>
+                    <split-movies scope="pending"></split-movies>
 				</div>
 				<div role="tabpanel" class="tab-pane fade" id="rating" aria-labelledby="rating-tab">
-					<split-top-rated-movies></split-top-rated-movies>
+                    <split-movies scope="topRated"></split-movies>
 				</div>
 				<div role="tabpanel" class="tab-pane fade" id="imdb" aria-labelledby="imdb-tab">
-                    <split-recently-movies></split-recently-movies>
+                    <split-movies scope="downloaded"></split-movies>
 				</div>
 			</div>
 		</div>

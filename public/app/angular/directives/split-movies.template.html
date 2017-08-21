@@ -1,7 +1,7 @@
-<div ng-repeat="movie in topRatedMovies track by $index">
+<div ng-repeat="movie in split.movies track by $index">
     <div class="col-md-2 w3l-movie-gride-agile">
         <a href="[[ movie.trailer_url ]]" class="hvr-shutter-out-horizontal" target="[[ movie.trailer_url ? '_blank' : '']]">
-            <img ng-model="movie" src="images/covers/movies/[[ movie.cover ]]" title="[[ movie.other_name ]]" class="img-responsive" alt=" " width="182" height="268">
+            <img ng-model="movie" ng-src="images/covers/movies/[[ movie.cover ]]" title="[[ movie.other_name ]]" class="img-responsive" alt=" " width="182" height="268">
             <div class="w3l-action-icon"><i class="fa fa-play-circle" aria-hidden="true"></i></div>
         </a>
         <div class="mid-1 agileits_w3layouts_mid_1_home">

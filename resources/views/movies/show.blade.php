@@ -6,7 +6,7 @@
 var title = '{{ strtolower($title) }}';
 </script>
 
-<div class="general-agileits-w3l" ng-controller="ShowController">
+<div class="general-agileits-w3l" ng-controller="ShowController as show">
 	<div class="w3l-medile-movies-grids">
 		<div class="movie-browse-agile">
 			<div class="browse-agile-w3ls general-w3ls">
@@ -23,10 +23,10 @@ var title = '{{ strtolower($title) }}';
 				</div>
 			 	<div class="container">
 					<div class="browse-inner-come-agile-w3">
-                        <div ng-repeat="movie in movies.data track by $index">
+                        <div ng-repeat="movie in show.movies.data track by $index">
 							<div class="col-md-2 w3l-movie-gride-agile">
                                 <a href="[[ movie.trailer_url ]]" class="hvr-shutter-out-horizontal" target="[[ movie.trailer_url ? '_blank' : '']]">
-                                    <img ng-model="movie" ng-src="[[ coverPath(movie.cover) ]]" title="[[ movie.other_name ]]" class="img-responsive" alt=" " width="182" height="268">
+                                    <img ng-model="movie" ng-src="[[ show.coverPath(movie.cover) ]]" title="[[ movie.other_name ]]" class="img-responsive" alt=" " width="182" height="268">
                                     <div class="w3l-action-icon"><i class="fa fa-play-circle" aria-hidden="true"></i></div>
                                 </a>
 								<div class="mid-1">
@@ -57,15 +57,15 @@ var title = '{{ strtolower($title) }}';
 				</div>
 			</div>
 			<div class="blog-pagenat-wthree">
-                <ul ng-if="movies.last_page > 1">
-                    <li class="[[ movies.current_page == 1 ? 'disabled' : '' ]]">
-                        <a class="frist" ng-click="changePage(movies.current_page - 1)">Prev</a>
+                <ul ng-if="show.movies.last_page > 1">
+                    <li class="[[ show.movies.current_page == 1 ? 'disabled' : '' ]]">
+                        <a class="frist" ng-click="show.changePage(show.movies.current_page - 1)">Prev</a>
                     </li>
-                    <li ng-repeat="page in pages">
-                        <a class="[[ movies.current_page == page ? 'frist' : '' ]]" ng-click="changePage(page)">[[ page ]]</a>
+                    <li ng-repeat="page in show.pages">
+                        <a class="[[ show.movies.current_page == page ? 'frist' : '' ]]" ng-click="show.changePage(page)">[[ page ]]</a>
                     </li>
-                    <li class="[[ movies.current_page == movies.last_page ? 'disabled' : '' ]]">
-                        <a class="last" ng-click="changePage(movies.current_page + 1)">Next</a>
+                    <li class="[[ show.movies.current_page == show.movies.last_page ? 'disabled' : '' ]]">
+                        <a class="last" ng-click="show.changePage(show.movies.current_page + 1)">Next</a>
                     </li>
                 </ul>
 				<!-- @include('movies.pagination', ['paginator' => $movies]) -->
