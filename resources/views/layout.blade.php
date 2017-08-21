@@ -49,7 +49,8 @@ jQuery(document).ready(function($){
 <script type="text/javascript" src="{{ URL::asset('app/angular/app.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('app/angular/sections/home/main-menu.controller.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('app/angular/sections/home/show.controller.js') }}"></script>
-<script type="text/javascript" src="{{ URL::asset('app/angular/directives/split-movies.directive.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('app/angular/sections/home/next-releases.controller.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('app/angular/directives/split-movies/split-movies.directive.js') }}"></script>
 @yield('scripts')
 <script type="text/javascript">
 var url = {

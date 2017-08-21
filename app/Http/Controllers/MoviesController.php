@@ -12,32 +12,28 @@ class MoviesController extends Controller {
         $this->viewPath = 'movies.show';
     }
 
-    public function downloaded(Movie $movie){
-        $movies = $movie->downloaded()->paginate(24);
+    public function downloaded(){
         $randomMovies = $this->randomMovies;
         $title = 'Downloaded';
-        return view($this->viewPath, compact('movies', 'randomMovies', 'title'));
+        return view($this->viewPath, compact('randomMovies', 'title'));
     }
 
-    public function pending(Movie $movie){
-        $movies = $movie->pending()->orderBy('release_date', 'desc')->paginate(24);
+    public function pending(){
         $randomMovies = $this->randomMovies;
         $title = 'Pending';
-        return view($this->viewPath, compact('movies', 'randomMovies', 'title'));
+        return view($this->viewPath, compact('randomMovies', 'title'));
     }
 
-    public function soon(Movie $movie){
-        $movies = $movie->soon()->orderBy('release_date', 'desc')->paginate(24);
+    public function soon(){
         $randomMovies = $this->randomMovies;
         $title = 'Soon';
-        return view($this->viewPath, compact('movies', 'randomMovies', 'title'));
+        return view($this->viewPath, compact('randomMovies', 'title'));
     }
 
-    public function future(Movie $movie){
-        $movies = $movie->future()->orderBy('release_date', 'asc')->paginate(24);
+    public function future(){
         $randomMovies = $this->randomMovies;
         $title = 'Future';
-        return view($this->viewPath, compact('movies', 'randomMovies', 'title'));
+        return view($this->viewPath, compact('randomMovies', 'title'));
     }
 
     public function quality(Movie $movie, $quality='1080p'){

@@ -52,7 +52,7 @@ class Movie extends Model {
     }
 
     public function scopeFuture(){
-        return $this->where('release_date', '>', date('Y-m-d'));//->where('downloaded', false);
+        return $this->where('release_date', '>', date('Y-m-d')); //->where('downloaded', false);
     }
 
     public function scopeLast(){

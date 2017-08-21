@@ -28,12 +28,12 @@
         };
 
         function up(){
-            var arriba;
+            var up;
             if(document.body.scrollTop != 0 || document.documentElement.scrollTop != 0){
                 window.scrollBy(0, -15);
-                arriba = setTimeout('up()', 10);
+                up = setTimeout('up()', 10);
             } else {
-                clearTimeout(arriba);
+                clearTimeout(up);
             }
         }
     }

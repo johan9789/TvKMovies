@@ -17,7 +17,7 @@
             },
             controller: ['$scope', '$http', SplitMoviesController],
             controllerAs: 'split',
-            templateUrl: 'app/angular/directives/split-movies.template.html'
+            templateUrl: 'app/angular/directives/split-movies/split-movies.template.html'
         }
     }
 

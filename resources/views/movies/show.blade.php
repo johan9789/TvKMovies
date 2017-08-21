@@ -68,7 +68,6 @@ var title = '{{ strtolower($title) }}';
                         <a class="last" ng-click="show.changePage(show.movies.current_page + 1)">Next</a>
                     </li>
                 </ul>
-				<!-- @include('movies.pagination', ['paginator' => $movies]) -->
 			</div>
 		</div>
 		<div class="review-slider">
