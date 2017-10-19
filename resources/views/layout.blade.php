@@ -46,11 +46,13 @@ jQuery(document).ready(function($){
 </script>
 <script type="text/javascript" src="{{ URL::asset('app/js/layout.js') }}"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-route.js"></script>
 <script type="text/javascript" src="{{ URL::asset('app/angular/app.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('app/angular/sections/home/main-menu.controller.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('app/angular/sections/home/show.controller.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('app/angular/sections/home/next-releases.controller.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('app/angular/directives/split-movies/split-movies.directive.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('app/angular/services/movie.service.js') }}"></script>
 @yield('scripts')
 <script type="text/javascript">
 var url = {
@@ -58,6 +60,7 @@ var url = {
         genres: '{{ route('api.genres.index') }}',
         qualities: '{{ route('api.qualities.index') }}',
         countries: '{{ route('api.countries.index') }}',
+        movie: '{{ route('api.movie.index') }}',
         movieList: {
             all: '{{ route('api.movie_list.index') }}',
             soon: '{{ route('api.movie_list.index', ['scope' => 'soon']) }}',
@@ -66,7 +69,9 @@ var url = {
             downloaded: '{{ route('api.movie_list.index', ['scope' => 'downloaded']) }}',
             nextReleases: '{{ route('api.movie_list.index', ['scope' => 'nextReleases']) }}',
             future: '{{ route('api.movie_list.index', ['scope' => 'future']) }}'
-        }
+        },
+        qualifyMovie: '{{ route('qualify-movie') }}',
+        updateStatus: '{{ route('api.movie_list.update_status') }}'
     },
     path: {
         movieCover: '{{ URL::asset(config('paths.MOVIE_COVER')) }}'

@@ -21,6 +21,7 @@ Route::group(['prefix' => 'movie-list'], function(){
 Route::resource('countries', 'Api\CountriesController', ['as' => 'api', 'only' => ['index']]);
 Route::resource('genres', 'Api\GenresController', ['as' => 'api', 'only' => ['index']]);
 Route::resource('qualities', 'Api\QualitiesController', ['as' => 'api', 'only' => ['index']]);
+Route::resource('movie', 'Api\MovieController', ['as' => 'api', 'only' => ['index', 'show']]);
 
 Route::get('/user', function(Request $request){
     return $request->user();

@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Entities\Movie;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller {
 
@@ -11,10 +12,11 @@ class HomeController extends Controller {
         return view('index', compact('lastMovies', 'nextReleases'));
     }
 
-    public function qualifyMovie($movieId, $qualification){
-        $movie = Movie::findOrFail($movieId);
-        $movie->rating = $qualification;
+    public function qualifyMovie(Request $request){
+        $movie = Movie::findOrFail($request->input('movie'));
+        $movie->rating = $request->input('qualification');
         $movie->save();
+        return ['success' => true];
     }
-    
+
 }

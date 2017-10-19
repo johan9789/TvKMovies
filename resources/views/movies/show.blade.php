@@ -4,9 +4,18 @@
 
 <script>
 var title = '{{ strtolower($title) }}';
+function up(){
+    var arriba;
+    if(document.body.scrollTop != 0 || document.documentElement.scrollTop != 0){
+        window.scrollBy(0, -15);
+        arriba = setTimeout('up()', 10);
+    } else {
+        clearTimeout(arriba);
+    }
+};
 </script>
 
-<div class="general-agileits-w3l" ng-controller="ShowController as show">
+<div class="general-agileits-w3l" ng-controller="ShowController as show" ng-init="show.getMovies()">
 	<div class="w3l-medile-movies-grids">
 		<div class="movie-browse-agile">
 			<div class="browse-agile-w3ls general-w3ls">
@@ -38,8 +47,8 @@ var title = '{{ strtolower($title) }}';
 										<div class="block-stars">
 											<ul class="w3l-ratings">
                                                 <li ng-repeat="i in [1, 2, 3, 4, 5]">
-                                                    <a href="#" id="star_to_movie" data-id="[[ movie.id ]]" data-qualification="[[ i ]]">
-                                                        <i id="i_star_to_movie" class="[[ movie.rating >= i ? 'fa fa-star' : 'fa fa-star-o' ]]" aria-hidden="true"></i>
+                                                    <a style="cursor: pointer;">
+                                                        <i ng-click="show.qualifyMovie(movie, i)" ng-class="movie.rating >= i ? 'fa fa-star' : 'fa fa-star-o'" aria-hidden="true"></i>
                                                     </a>
                                                 </li>
 											</ul>
@@ -47,7 +56,7 @@ var title = '{{ strtolower($title) }}';
 										<div class="clearfix"></div>
 									</div>
 								</div>
-                                <div class="ribben">
+                                <div class="ribben" ng-click="show.updateMovieStatus(movie)" ng-mouseover="show.mouseOverStatus(movie)" ng-mouseleave="show.changePage(show.movies.current_page)" style="cursor: pointer;">
                                     <p>[[ movie.status ]]</p>
                                 </div>
 							</div>
@@ -59,13 +68,13 @@ var title = '{{ strtolower($title) }}';
 			<div class="blog-pagenat-wthree">
                 <ul ng-if="show.movies.last_page > 1">
                     <li class="[[ show.movies.current_page == 1 ? 'disabled' : '' ]]">
-                        <a class="frist" ng-click="show.changePage(show.movies.current_page - 1)">Prev</a>
+                        <a class="frist" ng-click="show.changePage(show.movies.current_page - 1, true)">Prev</a>
                     </li>
                     <li ng-repeat="page in show.pages">
-                        <a class="[[ show.movies.current_page == page ? 'frist' : '' ]]" ng-click="show.changePage(page)">[[ page ]]</a>
+                        <a class="[[ show.movies.current_page == page ? 'frist' : '' ]]" ng-click="show.changePage(page, true)">[[ page ]]</a>
                     </li>
                     <li class="[[ show.movies.current_page == show.movies.last_page ? 'disabled' : '' ]]">
-                        <a class="last" ng-click="show.changePage(show.movies.current_page + 1)">Next</a>
+                        <a class="last" ng-click="show.changePage(show.movies.current_page + 1, true)">Next</a>
                     </li>
                 </ul>
 			</div>

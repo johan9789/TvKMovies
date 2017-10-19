@@ -29,7 +29,7 @@ class MovieListController extends Controller {
                         $movies = $movies->inRandomOrder();
                     }
                 } catch(BadMethodCallException $e){
-                    return response()->json(['error' => 'Movie list not available.']);
+                    return ['error' => 'Movie list not available.'];
                 }
             }
             if($paginate){
@@ -45,28 +45,28 @@ class MovieListController extends Controller {
         }
 
         if($count){
-            $movies = $movies->count();
+            $movies = ['count' => $movies->count()];
         }
 
         return $movies;
     }
 
     public function postUpdateStatus(Request $request){
-        $movie = Movie::findOrFail($request->get('movie_id'));
+        $movie = Movie::findOrFail($request->get('movie'));
 
-        $currentStatus = $request->get('status');
+        //if($movie->status != '✘' || $movie->status != '✔'){
+          //  return ['success' => false, 'message' => 'Can not update this status!'];
+        //}
 
-        $possibleStatus = '';
-
-        if($currentStatus == '✘'){
-            $possibleStatus = 1;
-        } else if($currentStatus == '✔'){
-            $possibleStatus = 0;
+        if($movie->status == '✘'){
+            $seen = 1;
+        } else if($movie->status == '✔'){
+            $seen = 0;
         }
 
-        $movie->seen = $possibleStatus;
+        $movie->seen = $seen;
         $movie->save();
-        return $movie;
+        return ['success' => true];
     }
 
 }
